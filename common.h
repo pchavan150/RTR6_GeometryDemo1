@@ -1,3 +1,10 @@
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                  
+//                                      Header Files                                                
+//                                                                                                  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include<GL/freeglut.h>
@@ -9,10 +16,14 @@
 #define PI 3.14159265359
 #endif
 
-void ScaleUniform2D(float point);
-void ScaleUniform3D(float point);
 
-// Global variable declarations
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                  
+//                                      Global Variables                                               
+//                                                                                                  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 extern BOOL bFullScreen;
 
 
@@ -23,8 +34,6 @@ typedef struct
 	float z;
 } VERTEX;
 
-
-extern VERTEX aVertices[3];
 
 typedef struct
 {
@@ -41,6 +50,23 @@ typedef struct
 
 extern PlacementParameters pPP;
 
-float random_float(float min, float max);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                   
+//                                      Function Prototypes                                          
+//                                                                                                   
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+float GetRandomFloat(float min, float max);
 void PlaceObject(void(*fun)());
-void set_default_values();
+void SetDefaultValues();
+void ScaleUniform2D(float point);
+void ScaleUniform3D(float point);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                   //
+//                                      End of File                                                  //
+//                                                                                                   //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+

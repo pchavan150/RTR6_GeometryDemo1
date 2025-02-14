@@ -1,11 +1,51 @@
 #define	 _CRT_SECURE_NO_WARNINGS
-// Header files
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                     
+//   Project: Geometry Group First Demo (Team Work)                                 
+//   File: Main File                                                   
+//   Author: RTR06 - Geometry Group                                             
+//   Date: 01/03/2025                                                  
+//   Description: Startup File                                         
+//                                                                     
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                  
+//                                      Header Files                                                
+//                                                                                                  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "main.h"
 #include "common.h"
 #include "Rishan.h"
 #include "Shreyash.h"
 #include "Madhuri.h"
+#include "Raviraj.h"
+#include "Pankaj.h"
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                  
+//                                      Global Variables                                               
+//                                                                                                  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Declare global variables here
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                   
+//                                      Function Prototypes                                          
+//                                                                                                   
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Function declarations
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                   
+//                                      Main Function                                                
+//                                                                                                   
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Entry-point Function
 int main(int argc, char* argv[])
@@ -42,6 +82,16 @@ int main(int argc, char* argv[])
 	return(0);
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                   //
+//                                      Function Definitions                                          //
+//                                                                                                   //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Function Definitions
+
+
 int initialize(void)
 {
 
@@ -63,7 +113,7 @@ int initialize(void)
 	InitializeLeafs();
 
 	//pPP = (pPlacementParameters)malloc(sizeof(pPlacementParameters));
-	set_default_values();
+	SetDefaultValues();
 
 	return(0);
 }
@@ -90,6 +140,15 @@ void display(void)
 	glTranslatef(0.0f, 0.0f, -3.0f);
 
 
+
+	Scene1();
+
+	//glFlush();
+	glutSwapBuffers();  // Swap buffers to display the rendered image
+}
+
+void Scene1()
+{
 	DrawSky();
 
 	glTranslatef(0.0f, 0.0f, 0.1f);
@@ -100,14 +159,21 @@ void display(void)
 	PlaceObject(DrawCloud2);
 	PlaceObject(DrawCloud3);
 
-	pPP = { 0.0f, 0.0f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
-	PlaceObject(DrawCloud4);
 
-	pPP = { 1.0f, -0.5f, 0.0f,		0.3f, 0.3f, 1.0f,		0.0f, 0.0f, 0.0f };
+	pPP = { -0.7f, -0.5f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(DrawAllBirdsEating);
+
+
+
+	pPP = { 0.8f, -0.5f, 0.1f,		0.2f, 0.6f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawMainTree);
 
-	//glFlush();
-	glutSwapBuffers();  // Swap buffers to display the rendered image
+	//temp bird
+	pPP = { 0.7f, -0.1f, 0.2f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(DrawBirdEating);
+
+
+	
 }
 
 void keyboard(unsigned char key, int x, int y)
@@ -157,4 +223,10 @@ void uninitialize(void)
 	p_array = NULL;
 
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                   //
+//                                      End of File                                                  //
+//                                                                                                   //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
