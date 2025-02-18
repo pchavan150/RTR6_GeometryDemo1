@@ -23,6 +23,7 @@
 #include "Madhuri.h"
 #include "Raviraj.h"
 #include "Pankaj.h"
+#include "Yash.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                  
@@ -149,11 +150,15 @@ void display(void)
 
 void Scene1()
 {
-	DrawSky();
+	PlaceObject(DrawSky);
+
+	//draw land
+
+	//draw land end
+
 
 	glTranslatef(0.0f, 0.0f, 0.1f);
 	//pPP = { 0.0f, 0.0f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
-
 
 	PlaceObject(DrawCloud1);
 	PlaceObject(DrawCloud2);
@@ -163,15 +168,15 @@ void Scene1()
 	pPP = { -0.7f, -0.5f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawAllBirdsEating);
 
-
-
 	pPP = { 0.8f, -0.5f, 0.1f,		0.2f, 0.6f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawMainTree);
 
-	//temp bird
+	//Task: temp bird
 	pPP = { 0.7f, -0.1f, 0.2f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawBirdEating);
+	//end
 
+	PlaceObject(DrawRocksOnNet);
 
 	
 }
