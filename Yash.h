@@ -31,17 +31,12 @@
 // Function declarations
 
 void drawPoly(VERTEX*, int);
-
 void drawRock1();
 void drawRock1();
 void drawRock2();
 void drawRock3();
 void drawRock4();
-
-
-
 void DrawRocksOnNet();
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //

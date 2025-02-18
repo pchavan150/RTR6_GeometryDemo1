@@ -6,7 +6,7 @@
 
 
 #include "common.h"
-#include "Madhuri.h"
+#include "Kapil.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,50 +25,72 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //All definations
-
-void DrawCloud4()
+void drawMeshLayingOnFloor(void)
 {
-	glColor3f(1.0f, 1.0f, 1.0f);
-	CreateCircle(-0.56f, 0.5f, 0.15f);
-	CreateCircle(-0.76f, 0.55f, 0.17f);
-	CreateCircle(-0.86f, 0.45f, 0.12f);
+
+    glBegin(GL_LINE);
+    // mesh color
+    glColor3f(0.0f, 0.0f, 0.0f);
+
+    float hight = 15.0f;
+    float spacing = 22.f;
+    float jPrev;
+    //float 
+    for (float i = (hight) * -1; i <= hight; i++)
+    {
+
+        for (float j = (hight * -1.0f); j < hight; )
+        {
+            jPrev = j;
+            // horizontal
+            glVertex3f(j / spacing, i / spacing + 0.005f, 0.0f);
+            j = j + 1;
+            glVertex3f(j / spacing, i / spacing, 0.0f);
+
+            // Vertical
+            glVertex3f(i / spacing + 0.005f, jPrev / spacing, 0.0f);
+            glVertex3f(i / spacing, j / spacing, 0.0f);
+        }
+    }
+    glEnd();
 }
 
-void DrawCloud5()
+void drawConeToPlaceBirds(void)
 {
-	glColor3f(1.0f, 1.0f, 1.0f);
-	CreateCircle(0.38f, 0.50f, 0.20f);
-	CreateCircle(0.65f, 0.50f, 0.28f);
-	CreateCircle(0.45f, 0.69f, 0.12f);
+    double base = 0.2;
+    double height = 0.03f;
+    GLint slices = 8;
+    GLint stacks = 10;
+
+    glPushMatrix();
+    glTranslatef(0.4, 0.4, 0);                     //  Quadrant I
+    glutWireCone(0.2f, 0.05f, 8, 10);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(-0.4, 0.4, 0);                     //  Quadrant II
+    glutWireCone(0.2f, 0.05f, 8, 10);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(-0.4, -0.4, 0);                    //   Quadrant III
+    glutWireCone(0.2f, 0.05f, 8, 10);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslatef(0.4, -0.4, 0);                    //   Quadrant IV
+    glutWireCone(0.2f, 0.05f, 8, 10);
+    glPopMatrix();
 }
 
-void DrawCloud6()
+
+void drawMeshFlying(void)
 {
-	glColor3f(1.0f, 1.0f, 1.0f);
-	CreateCircle(-0.20f, 0.68f, 0.150f);
-	CreateCircle(-0.27f, 0.70f, 0.17f);
-	CreateCircle(-0.25f, 0.79f, 0.12f);
+    drawMeshLayingOnFloor();
+    drawConeToPlaceBirds();
 }
 
-
-void CreateCircle(float center_x, float center_y, float radius)
-{
-	//variable declaration
-	float theta = 0.0f;
-	float x, y;
-
-	//code
-	glLineWidth(5.0f);
-	glBegin(GL_POLYGON);
-	for (int i = 0; i < 360; i++)
-	{
-		theta = i * (PI / 180.0f);
-		x = radius * cos(theta) + center_x;
-		y = radius * sin(theta) + center_y;
-		glVertex3f(x, y, 0.0f);
-	}
-	glEnd();
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //

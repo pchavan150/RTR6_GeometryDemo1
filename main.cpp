@@ -24,6 +24,8 @@
 #include "Raviraj.h"
 #include "Pankaj.h"
 #include "Yash.h"
+#include "Kapil.h"
+#include "Manasi.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                  
@@ -140,7 +142,10 @@ void display(void)
 
 	glTranslatef(0.0f, 0.0f, -3.0f);
 
-
+	if (bPlayMusic == FALSE)
+	{
+		playMusic();
+	}
 
 	Scene1();
 
@@ -150,15 +155,14 @@ void display(void)
 
 void Scene1()
 {
+	//pPP = { 0.0f, 0.0f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	pPP = { 0.0f, 0.0f, -0.01f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawSky);
 
 	//draw land
 
 	//draw land end
 
-
-	glTranslatef(0.0f, 0.0f, 0.1f);
-	//pPP = { 0.0f, 0.0f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 
 	PlaceObject(DrawCloud1);
 	PlaceObject(DrawCloud2);
@@ -175,6 +179,9 @@ void Scene1()
 	pPP = { 0.7f, -0.1f, 0.2f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawBirdEating);
 	//end
+
+	
+
 
 	PlaceObject(DrawRocksOnNet);
 

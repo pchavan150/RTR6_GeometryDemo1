@@ -4,7 +4,10 @@
 //                                                                                                  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma once
+#include "common.h"
+#include <mmsystem.h>
+#include "Manasi.h"
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                  
@@ -13,19 +16,40 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Declare global variables here
 
+BOOL bPlayMusic = FALSE;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                   
-//                                      Function Prototypes                                          
-//                                                                                                   
+//                                                                                                   //
+//                                      Function Definitions                                          //
+//                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Function declarations
 
-void DrawCloud4();
-void DrawCloud5();
-void DrawCloud6();
-void CreateCircle(float center_x, float center_y, float radius);
+
+void playMusic(void)
+{
+	PlaySound("Data/jeetenge.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+
+	bPlayMusic = TRUE;
+}
+
+void stopMusic(void)
+{
+	PlaySound(NULL, 0, SND_PURGE);
+	bPlayMusic = FALSE;
+}
+
+void toggleSound(void)
+{
+	if (bPlayMusic == FALSE)
+	{
+		playMusic();
+	}
+	else
+	{
+		stopMusic();
+	}
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,4 +57,7 @@ void CreateCircle(float center_x, float center_y, float radius);
 //                                      End of File                                                  //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
