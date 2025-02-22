@@ -26,6 +26,8 @@
 #include "Yash.h"
 #include "Kapil.h"
 #include "Manasi.h"
+#include "Chaitanya.h"
+#include "Sumit.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                  
@@ -144,12 +146,13 @@ void display(void)
 
 	if (bPlayMusic == FALSE)
 	{
-		playMusic();
+		//playMusic();
 	}
+
 
 	Scene1();
 
-	//glFlush();
+	glFlush();
 	glutSwapBuffers();  // Swap buffers to display the rendered image
 }
 
@@ -169,23 +172,38 @@ void Scene1()
 	PlaceObject(DrawCloud3);
 
 
+	pPP = { -0.5f, 0.0f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(createGrass1);
+
+	pPP = { -0.3f, 0.0f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(createGrass2);
+
+	pPP = { -0.0f, 0.0f, 0.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(createGrass3);
+
+
 	pPP = { -0.7f, -0.5f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawAllBirdsEating);
 
 	pPP = { 0.8f, -0.5f, 0.1f,		0.2f, 0.6f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawMainTree);
 
-	//Task: temp bird
+	// TODO : temp bird
 	pPP = { 0.7f, -0.1f, 0.2f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawBirdEating);
 	//end
 
-	
+	pPP = { -0.7f, 0.2f, 0.0f,		0.1f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(DrawTree2);
 
+
+	pPP = { -0.55f, -0.5f, 0.0f,	    0.5f, 0.5f, 0.0f,		300.0f, 0.0f, 130.0f };
+	PlaceObject(drawMeshLayingOnFloor);
 
 	PlaceObject(DrawRocksOnNet);
 
-	
+
+
 }
 
 void keyboard(unsigned char key, int x, int y)
@@ -196,6 +214,55 @@ void keyboard(unsigned char key, int x, int y)
 	case 27:
 		glutLeaveMainLoop();
 		break;
+
+	case 'W':
+	case 'w':
+		if (TransformMode == TRANSLATE)
+			testMovY += testMoveSpeed;
+
+		if (TransformMode == SCALE)
+			testScaleY += testScaleSpeed;
+
+		if (TransformMode == ROTATE)
+			testRotateY += testRotateSpeed;
+		break;
+
+	case 'S':
+	case 's':
+		if (TransformMode == TRANSLATE)
+			testMovY -= testMoveSpeed;
+
+		if (TransformMode == SCALE)
+			testScaleY -= testScaleSpeed;
+
+		if (TransformMode == ROTATE)
+			testRotateY -= testRotateSpeed;
+		break;
+
+	case 'A':
+	case 'a':
+		if (TransformMode == TRANSLATE)
+			testMovX -= testMoveSpeed;
+
+		if (TransformMode == SCALE)
+			testScaleX -= testScaleSpeed;
+
+		if (TransformMode == ROTATE)
+			testRotateX -= testRotateSpeed;
+		break;
+
+	case 'D':
+	case 'd':
+		if (TransformMode == TRANSLATE)
+			testMovX += testMoveSpeed;
+
+		if (TransformMode == SCALE)
+			testScaleX += testScaleSpeed;
+
+		if (TransformMode == ROTATE)
+			testRotateX += testRotateSpeed;
+		break;
+
 	case 'F':
 	case 'f':
 		if (bFullScreen == FALSE)
@@ -209,6 +276,17 @@ void keyboard(unsigned char key, int x, int y)
 			bFullScreen = FALSE;
 		}
 		break;
+
+	case 'C':
+	case 'c':
+		ChangeSelectedObject();
+		break;
+
+	case 'T':
+	case 't':
+		ChangeTransformMode();
+		break;
+
 	default:
 		break;
 	}

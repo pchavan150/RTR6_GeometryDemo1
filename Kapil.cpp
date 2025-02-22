@@ -28,7 +28,7 @@
 void drawMeshLayingOnFloor(void)
 {
 
-    glBegin(GL_LINE);
+    glBegin(GL_LINES);
     // mesh color
     glColor3f(0.0f, 0.0f, 0.0f);
 

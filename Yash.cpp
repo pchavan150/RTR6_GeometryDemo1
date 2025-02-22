@@ -27,16 +27,19 @@
 
 void DrawRocksOnNet()
 {
-	pPP = { -0.75f, -0.3f, -1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };
+	pPP = { -0.90f, -0.5f, -1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(drawRock1);
 
-	pPP = { -0.5f, -0.5f, 0.0f,		0.05f, 0.05f, 1.0f,		0.0f, 0.0f, 0.0f };
+	pPP = { -0.35f, -0.20f, 0.0f,		0.05f, 0.05f, 1.0f,		0.0f, 0.0f, 0.0f };
+	
 	PlaceObject(drawRock2);
 
-	pPP = { -0.15f, -0.5f, 0.0f,		0.04f, 0.04f, 1.0f,		0.0f, 0.0f, 0.0f };
+	pPP = { -0.40f, -0.45f, 0.0f,		0.04f, 0.04f, 1.0f,		0.0f, 0.0f, 0.0f };
+	
 	PlaceObject(drawRock3);
 
-	pPP = { -0.15f, -0.2f, 0.0f,		0.04f, 0.06f, 1.0f,		0.0f, 0.0f, 0.0f };
+	pPP = { -0.10f, -0.35f, 0.0f,		0.04f, 0.06f, 1.0f,		0.0f, 0.0f, 0.0f };
+	
 	PlaceObject(drawRock4);
 }
 

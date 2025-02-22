@@ -5,17 +5,9 @@
 //                                                                                                  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma once
 
-#include<GL/freeglut.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-
-#ifndef PI
-#define PI 3.14159265359
-#endif
-
+#include "common.h"
+#include "Sumit.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,73 +15,77 @@
 //                                      Global Variables                                               
 //                                                                                                  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Declare global variables here
 
 
-extern float testMovX;
-extern float testMovY;
-extern float testMoveSpeed;
-extern float testScaleX;
-extern float testScaleY;
-extern float testScaleSpeed;
-extern float testRotateX;
-extern float testRotateY;
-extern float testRotateSpeed;
-
-extern BOOL bFullScreen;
-extern void(*testObjectSelection)(void);
-
-typedef struct
-{
-	float x;
-	float y;
-	float z;
-} VERTEX;
-
-
-typedef struct
-{
-	float xT;
-	float yT;
-	float zT;
-	float xS;
-	float yS;
-	float zS;
-	float xR;
-	float yR;
-	float zR;
-} PlacementParameters;
-
-extern PlacementParameters pPP;
-
-typedef enum tagTransformMode
-{
-	TRANSLATE,
-	ROTATE,
-	SCALE,
-};
-
-extern tagTransformMode  TransformMode;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                   
-//                                      Function Prototypes                                          
-//                                                                                                   
+//                                                                                                   //
+//                                      Function Definitions                                          //
+//                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-float GetRandomFloat(float min, float max);
-void PlaceObject(void(*fun)());
-BOOL IsObjectPresent(void(*fun)());
-void SetDefaultValues();
-void ScaleUniform2D(float point);
-void ScaleUniform3D(float point);
-void MoveObject();
-void ChangeSelectedObject();
-void ChangeTransformMode();
+
+
+
+void DrawTree2()
+{
+
+	//  trunk
+	glColor3f(0.55f, 0.27f, 0.07f);
+	glBegin(GL_TRIANGLES);
+	glVertex2f(-0.1f, -0.8f);
+	glVertex2f(0.1f, -0.8f);
+	glVertex2f(0.0f, 0.6f);
+	glEnd();
+
+	//right branch 
+	glBegin(GL_TRIANGLES);
+	glVertex2f(0.0f, 0.0f);
+	glVertex2f(0.0f, -0.3f);
+	glVertex2f(0.4f, 0.3f);
+	glEnd();
+
+	//left branch 
+	glBegin(GL_TRIANGLES);
+	glVertex2f(0.0f, 0.0f);
+	glVertex2f(0.0f, -0.3f);
+	glVertex2f(-0.4f, 0.3f);
+	glEnd();
+
+	glColor3f(0.0f, 0.8f, 0.0f); // green
+
+	glPushMatrix();
+	glTranslatef(-0.4f, 0.5f, 0.0f);
+	glutSolidSphere(0.35, 20, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0.0f, 0.5f, 0.0f);
+	glutSolidSphere(0.35, 20, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0.4f, 0.5f, 0.0f);
+	glutSolidSphere(0.35, 20, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-0.2f, 0.8f, 0.0f);
+	glutSolidSphere(0.25, 20, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0.2f, 0.8f, 0.0f);
+	glutSolidSphere(0.25, 20, 20);
+	glPopMatrix();
+
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //
 //                                      End of File                                                  //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 

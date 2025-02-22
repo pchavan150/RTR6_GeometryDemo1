@@ -17,6 +17,9 @@
 // Declare global variables here
 
 point_t* p_array = NULL;
+point_t* p_tree_polygon_array = NULL;
+int tree_polygon_array_size = 0;
+
 FILE* fp = NULL;
 size_t nElements = 0;
 float angle = 0.0f;
@@ -39,7 +42,7 @@ struct point_array create_array(void)
 
 	struct point_array p_arr;
 
-	p_array = (point_t*)malloc(45 * sizeof(point_t));
+	/*p_array = (point_t*)malloc(45 * sizeof(point_t));
 	if (p_array == NULL)
 	{
 		puts("Error in allocating memory");
@@ -135,10 +138,15 @@ struct point_array create_array(void)
 	p_array[43].x = -0.35f;
 	p_array[43].y = 0.868f;
 	p_array[44].x = 0.0f;
-	p_array[44].y = 0.765f;
+	p_array[44].y = 0.765f;*/
 
-	p_arr.p = p_array;
-	p_arr.size = 45;
+	// (tree_polygon_array_size, p_tree_polygon_array) global variables initialized in initilize()
+	//
+	p_arr.p = p_tree_polygon_array;
+	p_arr.size = tree_polygon_array_size;
+	//p_arr.p = p_array;
+	//p_arr.size = 45;
+
 
 	return p_arr;
 }
@@ -284,14 +292,63 @@ void drawLeaf(void)
 void InitializeLeafs()
 {
 	// local variable declarations
-	int i;
+
+	// to make the polygon of the shape required to plot the leaves
+	// [ THE UPPER GREEN PART OF TREE ]
+	point_t tree_array[] = {
+								{ 0.0f, 2.0f },
+								{ 0.0f, 0.765f },
+								{ 0.1357f, 0.4732f },
+								{ 0.4848f, 0.5128f },
+								{ 0.6672f, 0.72265f },
+								{ 0.9636f, 0.4855f },
+								{ 1.25f, 0.2484f },
+								{ 1.39f, 0.2894f },
+								{ 1.7f, 0.1845f },
+								{ 1.95f, 0.344f },
+								{ 1.85f, 0.6f },
+								{ 1.8f, 0.8f },
+								{ 1.84f, 1.0f },
+								{ 1.688f, 1.25f },
+								{ 1.46f, 1.434f },
+								{ 1.5f, 1.7f },
+								{ 1.35f, 1.844f },
+								{ 1.4f, 2.2f },
+								{ 1.141f, 2.36f },
+								{ 0.73f, 2.222f },
+								{ 0.6f, 2.6f },
+								{ 0.4f, 2.71f },
+								{ 0.3f, 2.82f },
+								{ 0.01f, 2.9f },
+								{ -0.244f, 2.75f },
+								{ -0.51f, 2.7f },
+								{ -0.8f, 2.48f },
+								{ -1.2f, 2.4f },
+								{ -1.35f, 1.96f },
+								{ -1.74f, 1.83f },
+								{ -1.71f, 1.657f },
+								{ -1.7f, 1.4522f },
+								{ -1.97f, 1.3382f },
+								{ -2.11f, 1.14f },
+								{ -2.03f, 0.91f },
+								{ -2.12f, 0.58f },
+								{ -1.92f, 0.43f },
+								{ -1.8f, 0.2f },
+								{ -1.52f, 0.066f },
+								{ -1.165f, 0.05f },
+								{ -0.937f, 0.198f },
+								{ -0.659f, 0.4171f },
+								{ -0.541f, 0.854f },
+								{ -0.35f, 0.868f },
+								{ 0.0f, 0.765f }
+	};
 
 	glPointSize(12.0f);
 
 	// initializing Position array for LEAF_COUNT number of leaves
 
 	// here ranges given to x and y are fixed for our polygon!
-	for (i = 0; i < LEAF_COUNT; ++i)
+	for (int i = 0; i < LEAF_COUNT; ++i)
 	{
 		position_arr[i].x = generate_random(2.1f, -2.3f);		// fixed random x 
 		position_arr[i].y = generate_random(3.0f, -1.1f);		// fixed random y
@@ -299,6 +356,21 @@ void InitializeLeafs()
 		position_arr[i].color = generate_random(0.8f, 0.3f);	// fixed random color (range - light green to dark green)
 		position_arr[i].angle = generate_random(50, -20);		// fixed random initial angle of the leaf
 		position_arr[i].direction = 0;							// direction
+	}
+
+	// initialize global variables
+	//
+	tree_polygon_array_size = sizeof(tree_array) / sizeof(tree_array[0]);
+	p_tree_polygon_array = (point_t*)malloc(tree_polygon_array_size * sizeof(point_t));
+	if (p_tree_polygon_array == NULL)
+	{
+		puts("Error in allocating memory");
+		exit(EXIT_FAILURE);
+	}
+
+	for (int i = 0; i < tree_polygon_array_size; i++)
+	{
+		p_tree_polygon_array[i] = tree_array[i];
 	}
 }
 
