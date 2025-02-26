@@ -28,6 +28,7 @@
     <ClInclude Include="Pankaj.h" />
     <ClInclude Include="Raviraj.h" />
     <ClInclude Include="Rishan.h" />
+    <ClInclude Include="Scenes.h" />
     <ClInclude Include="Shreyash.h" />
     <ClInclude Include="Sumit.h" />
     <ClInclude Include="Yash.h" />
@@ -42,6 +43,7 @@
     <ClCompile Include="Pankaj.cpp" />
     <ClCompile Include="Raviraj.cpp" />
     <ClCompile Include="Rishan.cpp" />
+    <ClCompile Include="Scenes.cpp" />
     <ClCompile Include="Shreyash.cpp" />
     <ClCompile Include="Sumit.cpp" />
     <ClCompile Include="Yash.cpp" />

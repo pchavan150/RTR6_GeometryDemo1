@@ -167,6 +167,16 @@ void DrawCloud1()
 	createCircle(0.46f, 0.845f, 0.07f);
 }
 
+void Draw3Clouds()
+{
+	pPP = { -4.3f, -0.05f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(DrawCloud1);
+	pPP = { -2.6f, -0.35f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(DrawCloud2);
+	pPP = { -2.5f, 0.1f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(DrawCloud3);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //
 //                                      End of File                                                  //
