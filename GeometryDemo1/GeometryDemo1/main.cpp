@@ -150,10 +150,7 @@ void display(void)
 	{
 		//playMusic();
 	}
-
-
-	//Scene1();
-	//Scene2();
+	
 	JungleScene();
 
 	glFlush();
