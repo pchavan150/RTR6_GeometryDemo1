@@ -27,13 +27,13 @@
 //All definations
 void drawMeshLayingOnFloor(void)
 {
-
+    glLineWidth(1.0);
     glBegin(GL_LINES);
     // mesh color
     glColor3f(0.0f, 0.0f, 0.0f);
 
-    float hight = 15.0f;
-    float spacing = 22.f;
+    float hight = 8.0f;
+    float spacing = 12.0f;
     float jPrev;
     //float 
     for (float i = (hight) * -1; i <= hight; i++)

@@ -144,14 +144,15 @@ void display(void)
 
 	glLoadIdentity();
 
-	glTranslatef(0.0f, 0.0f, -10.0f);
+	glTranslatef(0.0f, 0.0f, -3.0f);
 
 	if (bPlayMusic == FALSE)
 	{
 		//playMusic();
 	}
 	
-	JungleScene();
+	//JungleScene();
+	BirdsEatingScene();
 
 	glFlush();
 	glutSwapBuffers();  // Swap buffers to display the rendered image
