@@ -5,6 +5,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "common.h"
+#include "Scenes.h"
 #include "Yash.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,22 +28,30 @@
 
 void DrawRocksOnNet()
 {
-	pPP = { -0.75f, -0.4f, -0.5f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };
-	PlaceObject(drawRock1);
+	if (IsRock1Visible)
+	{
+		pPP = { -0.5f, 0.6f, 0.0f,		0.4f, 0.4f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(drawRock1);
+	}
 
-	pPP = { -0.35f, -0.20f, 0.0f,		0.05f, 0.05f, 1.0f,		0.0f, 0.0f, 0.0f };
-	
-	PlaceObject(drawRock2);
+	if (IsRock2Visible)
+	{
+		pPP = { -0.55f, -0.55f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(drawRock2);
+	}
 
-	pPP = { -0.40f, -0.45f, 0.0f,		0.04f, 0.04f, 1.0f,		0.0f, 0.0f, 0.0f };
-	
-	PlaceObject(drawRock3);
+	if (IsRock3Visible)
+	{
+		pPP = { 0.6f, -0.55f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(drawRock3);
+	}
 
-	pPP = { -0.10f, -0.35f, 0.0f,		0.04f, 0.06f, 1.0f,		0.0f, 0.0f, 0.0f };
-	
-	PlaceObject(drawRock4);
+	if (IsRock4Visible)
+	{
+		pPP = { 0.6f, 0.55f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(drawRock4);
+	}
 }
-
 
 void drawPoly(VERTEX* points, int n)
 {
@@ -50,7 +59,7 @@ void drawPoly(VERTEX* points, int n)
 
 	for (int i = 0; i < n; i++)
 	{
-		glVertex3f(points[i].x, points[i].y, 1.0f);
+		glVertex3f(points[i].x, points[i].y, 0.0f);
 	}
 
 	glEnd();

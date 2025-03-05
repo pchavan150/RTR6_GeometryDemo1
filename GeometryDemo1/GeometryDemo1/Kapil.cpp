@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "Kapil.h"
+#include "Yash.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,19 +28,21 @@
 //All definations
 void drawMeshLayingOnFloor(void)
 {
+    DrawRocksOnNet();
+
     glLineWidth(1.0);
     glBegin(GL_LINES);
     // mesh color
     glColor3f(0.0f, 0.0f, 0.0f);
 
-    float hight = 8.0f;
+    float height = 8.0f;
     float spacing = 12.0f;
     float jPrev;
     //float 
-    for (float i = (hight) * -1; i <= hight; i++)
+    for (float i = (height) * -1; i <= height; i++)
     {
 
-        for (float j = (hight * -1.0f); j < hight; )
+        for (float j = (height * -1.0f); j < height; )
         {
             jPrev = j;
             // horizontal
@@ -53,6 +56,8 @@ void drawMeshLayingOnFloor(void)
         }
     }
     glEnd();
+
+    
 }
 
 void drawConeToPlaceBirds(void)

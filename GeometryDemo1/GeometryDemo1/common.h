@@ -34,6 +34,10 @@ extern float testScaleSpeed;
 extern float testRotateX;
 extern float testRotateY;
 extern float testRotateSpeed;
+extern float cameraX;
+extern float cameraY;
+extern float cameraZ;
+extern float cameraSpeed;
 
 extern BOOL bFullScreen;
 extern void(*testObjectSelection)(void);

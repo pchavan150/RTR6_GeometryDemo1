@@ -28,6 +28,7 @@
 #include "Manasi.h"
 #include "Chaitanya.h"
 #include "Sumit.h"
+#include "Hunter.h"
 #include "Scenes.h"
 
 //Test
@@ -151,8 +152,9 @@ void display(void)
 		//playMusic();
 	}
 	
-	//JungleScene();
-	BirdsEatingScene();
+
+	StartStory();
+	
 
 	glFlush();
 	glutSwapBuffers();  // Swap buffers to display the rendered image
@@ -167,6 +169,30 @@ void keyboard(unsigned char key, int x, int y)
 	{
 	case 27:
 		glutLeaveMainLoop();
+		break;
+
+	case '6':
+		cameraX -= cameraSpeed;
+		break;
+
+	case '4':
+		cameraX += cameraSpeed;
+		break;
+
+	case '8':
+		cameraY -= cameraSpeed;
+		break;
+
+	case '5':
+		cameraY += cameraSpeed;
+		break;
+
+	case '9':
+		cameraZ += cameraSpeed;
+		break;
+
+	case '7':
+		cameraZ -= cameraSpeed;
 		break;
 
 	case 'W':

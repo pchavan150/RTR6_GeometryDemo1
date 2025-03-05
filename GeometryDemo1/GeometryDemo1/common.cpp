@@ -28,6 +28,11 @@ float testRotateX = 0.0f;
 float testRotateY = 0.0f;
 float testRotateSpeed = 2.0f;
 
+float cameraX = 2.95f;
+float cameraY = 0.05f;
+float cameraZ = 0.45f;
+float cameraSpeed = 0.05f; //0.05
+
 int testSizeOfObjectList = -1;
 void((*(testObjectList[100]))(void));
 void(*testObjectSelection)(void) = NULL;

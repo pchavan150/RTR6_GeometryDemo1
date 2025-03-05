@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Chaitanya.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="Hunter.h" />
     <ClInclude Include="Kapil.h" />
     <ClInclude Include="Madhuri.h" />
     <ClInclude Include="main.h" />
@@ -36,6 +37,7 @@
   <ItemGroup>
     <ClCompile Include="Chaitanya.cpp" />
     <ClCompile Include="common.cpp" />
+    <ClCompile Include="Hunter.cpp" />
     <ClCompile Include="Kapil.cpp" />
     <ClCompile Include="Madhuri.cpp" />
     <ClCompile Include="main.cpp" />
