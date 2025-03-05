@@ -19,6 +19,8 @@ void DrawBirdEating();
 void DrawTree3();
 void DrawFlowers();
 void DrawBird_Standing();
+void DrawLandingBird();
+void DrawFlyingBird();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //

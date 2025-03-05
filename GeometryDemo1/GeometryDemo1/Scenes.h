@@ -28,6 +28,7 @@ enum CurrentScene
 {
 	JUNGLE_SCENE,
 	BIRDS_COMING_SCENE,
+	BIRDS_EATING_SCENE,
 	BIRDS_FLYING_SCENE,
 };
 
@@ -38,6 +39,8 @@ extern BOOL IsRock1Visible;
 extern BOOL IsRock2Visible;
 extern BOOL IsRock3Visible;
 extern BOOL IsRock4Visible;
+
+extern BOOL IsComingBirdsVisible;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   

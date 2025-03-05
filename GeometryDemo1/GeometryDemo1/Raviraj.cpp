@@ -265,7 +265,6 @@ void DrawBirdEating()
 
 }
 
-
 void DrawBird_Standing() {
 
 	glPushMatrix();
@@ -508,6 +507,651 @@ void DrawBird_Standing() {
 
 }
 
+void DrawLandingBird()
+{
+	float z = 0.0f;
+
+	float birdBody[49][2] = {
+		{0.375f, 0.035f},
+		{0.4f, 0.025f},
+		{0.7f, 0.0f},
+		{0.775f, -0.010f},
+		{0.790f, -0.020f},
+		{0.780f, -0.029f},
+		{0.790f, -0.040f},
+		{0.810f, -0.048f},
+		{0.790f, -0.059f},
+		{0.80f, -0.070f},
+		{0.840f, -0.077f},
+		{0.845f, -0.10f},
+		{0.865f, -0.125f},
+		{0.850f, -0.15f},
+		{0.60f, -0.075f},
+		{0.50f, -0.080f},
+		{0.40f, -0.10f},
+		{0.35f, -0.15f},
+		{0.30f, -0.20f},
+		{0.25f, -0.220f},
+		{0.2f, -0.245f},
+		{0.1f, -0.259f},
+		{0.0f, -0.252f},
+		{-0.05f, -0.240f},
+		{-0.10f, -0.225f},
+		{-0.15f, -0.210f},
+		{-0.20f, -0.180f},
+		{-0.25f, -0.150f},
+		{-0.30f, -0.105f},
+		{-0.34f, -0.059f},
+		{-0.35f, -0.05f},
+		{-0.4f, -0.037f},
+		{-0.45f, -0.0125f},
+		{-0.475f, 0.0f},
+		{-0.49f, 0.05f},
+		{-0.475f, 0.075f},
+		{-0.450f, 0.10f},
+		{-0.425f, 0.125f},
+		{-0.40f, 0.137f},
+		{-0.35f, 0.134f},
+		{-0.3f, 0.125f},
+		{-0.250f, 0.112f},
+		{-0.2f, 0.125f},
+		{-0.1f, 0.137f},
+		{0.0f, 0.145f},
+		{0.1f, 0.125f},
+		{0.2f, 0.1f},
+		{0.3f, 0.075f},
+		{0.35f, 0.05f}
+	};
+
+	float birdFeather[32][2] = {
+		{-0.125f, 0.137f},
+		{-0.25f, 0.25f},
+		{-0.285f, 0.3f},
+		{ -0.3f, 0.35f},
+		{-0.285f, 0.40f},
+		{-0.270f, 0.45f},
+		{-0.175f, 0.65f},
+		{-0.125f, 0.7125f},
+		{-0.1f, 0.725f},
+		{-0.11f, 0.675f},
+		{-0.1f, 0.6f},
+		{-0.045f, 0.675f},
+		{0.0f, 0.7f},
+		{0.020f, 0.675f},
+		{-0.020f, 0.575f},
+		{0.1f, 0.65f},
+		{0.1f, 0.6125f},
+		{0.075f, 0.537f},
+		{0.1f, 0.55f},
+		{0.15f, 0.56f},
+		{0.17f, 0.475f},
+		{0.225f, 0.375f},
+		{0.2f, 0.34f},
+		{0.225f, 0.325f},
+		{0.26f, 0.3f},
+		{0.237f, 0.25f},
+		{0.35f, 0.2f},
+		{0.375f, 0.15f},
+		{0.390f, 0.1f},
+		{0.375f, 0.15f},
+		{0.390f, 0.1f},
+		{0.375f, 0.035f}
+	};
+
+	float birdFeatherInternals[][2] = {
+		{0.7f, 0.0f},
+		{0.775f, -0.010f},
+		{0.790f, -0.020f},
+		{0.780f, -0.029f},
+		{0.790f, -0.040f},
+		{0.810f, -0.048f},
+		{0.790f, -0.059f},
+		{0.80f, -0.070f},
+		{0.840f, -0.077f},
+		{0.845f, -0.10f},
+		{0.865f, -0.125f},
+		{0.850f, -0.15f},
+		{0.60f, -0.075f},
+		{0.780f, -0.15f},
+	};
+
+
+	float birdLegsStart[7][2] = {
+		{1.0f, -3.0f}, //start
+		{1.0f, -2.46f},
+		{1.70f, -2.46f},
+		{1.375f, -3.0f},
+		{0.75f, -3.30f},
+		{0.6875f, -3.03f},
+		{1.1f, -2.80f}
+	};
+
+	float birdLegsStart_2[4][2] = {
+		{0.75f, -3.30f},
+		{0.25f, -3.5f},
+		{0.125f, -3.375f},
+		{0.6875f, -3.03f}
+	};
+
+	float birdLegs1_End[10][2] = {
+		{0.0f, -3.5f},
+		{0.25f, -3.5f},
+		{0.125f, -3.25f},
+		{-0.60f, -3.10f},
+		{-0.060f, -3.375f},
+		{-0.5f, -3.5675f},
+		{-0.03f, -3.5f},
+		{0.0f, -3.95f},
+		{0.125f, -3.5f},
+		{0.25f, -3.5f}
+	};
+
+	float birdLeg2_start[5][2] = {
+		{0.75f, -3.5f},
+		{0.40f, -2.46f},
+		{1.0f, -2.46f},
+		{0.80f, -3.75f},
+		{0.5075f, -3.6875}
+	};
+
+	float birdLeg2_End[][2] = {
+		{0.375f, -4.0f},
+		{0.80f, -3.75f},
+		{0.5f, -4.125f},
+		{0.6875f, -4.125f},
+		{0.75f, -4.25f},
+		{0.80f, -4.6875f},
+		{0.70f, -4.6875f},
+		{0.70f, -4.75f},
+		{0.40f, -4.187f},
+		{-0.375f, -4.25f},
+		{0.0f, -4.0625f},
+		{-0.45f, -3.92f},
+		{0.25f, -4.0f},
+		{0.5075f, -3.6875},
+		{0.80f, -3.75f}
+	};
+
+	int i;
+	//glScalef(2.0f, 2.0f, 2.0f);
+
+	//Eye
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(1);
+	glBegin(GL_POINTS);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(-0.410f, 0.046f, 0.0f);
+	glEnd();
+
+	glPointSize(4);
+	glBegin(GL_POINTS);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(-0.410f, 0.046f, 0.0f);
+	glEnd();
+
+
+	glPointSize(8);
+	glBegin(GL_POINTS);
+	glColor3f(1.0f, 0.6f, 0.0f);
+	glVertex3f(-0.405f, 0.05f, 0.0f);
+	glEnd();
+
+
+	//EXPT
+	glLineWidth(2.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 17; i < 28; i++) {
+		float newCord = birdBody[i][1];
+		if (newCord > 0) {
+			newCord = birdBody[i][1] - 0.070f;
+		}
+		else {
+			newCord = birdBody[i][1] + 0.070f;
+		}
+
+		glVertex3f(birdBody[i][0], newCord, z);
+	}
+	glEnd();
+
+	//EXPT
+
+	// fether line from body
+	glLineWidth(1.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(-0.125f - 0.10f, 0.125f, z);
+	glVertex3f(-0.05f - 0.070f, 0.05f, z);
+	glVertex3f(-0.0125f - 0.070, 0.025f, z);
+	glVertex3f(0.4f, -0.005f, z);
+	glVertex3f(0.425f, -0.025f, z);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4f, 0.4f, 0.5f);
+	for (i = 0; i < 14; i++) {
+		glVertex3f(birdFeatherInternals[i][0], birdFeatherInternals[i][1], z);
+	}
+	glEnd();
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4156f, 0.5372f, 0.65f);
+	for (i = 0; i < 49; i++) {
+		glVertex3f(birdBody[i][0], birdBody[i][1], z);
+	}
+	glEnd();
+
+
+
+
+	glLineWidth(2.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 11; i++) {
+		glVertex3f(birdFeather[i][0] - 0.075, birdFeather[i][1] - 0.075f, z);
+	}
+	glEnd();
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4156f, 0.5372f, 0.65f);
+	for (i = 0; i < 32; i++) {
+		glVertex3f(birdFeather[i][0] - 0.075, birdFeather[i][1] - 0.075f, z);
+	}
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.039f, 0.24f, 0.43f);
+	for (i = 0; i < 32; i++) {
+		glVertex3f(birdFeather[i][0] - 0.075, birdFeather[i][1] - 0.075f, z);
+	}
+	for (i = 0; i < 32; i++) {
+		glVertex3f(birdFeather[i][0], birdFeather[i][1], z);
+	}
+	glEnd();
+
+	//Beak
+	glBegin(GL_TRIANGLES);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(-0.475f, 0.0f, z);
+	glVertex3f(-0.525f, -0.006f, z);
+	glVertex3f(-0.49f, 0.05f, z);
+	glEnd();
+
+
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4156f, 0.5372f, 0.65f);
+	for (i = 0; i < 7; i++) {
+		glVertex3f(birdLegsStart[i][0] / 10, birdLegsStart[i][1] / 10, z);
+	}
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 4; i++) {
+		glVertex3f(birdLegsStart_2[i][0] / 10, birdLegsStart_2[i][1] / 10, z);
+	}
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 10; i++) {
+		glVertex3f(birdLegs1_End[i][0] / 10, birdLegs1_End[i][1] / 10, z);
+	}
+	glEnd();
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4156f, 0.5372f, 0.65f);
+	for (i = 0; i < 5; i++) {
+		glVertex3f(birdLeg2_start[i][0] / 10, birdLeg2_start[i][1] / 10, z);
+	}
+	glEnd();
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < ((sizeof(birdLeg2_End) / 2) / sizeof(float)); i++) {
+		glVertex3f(birdLeg2_End[i][0] / 10, birdLeg2_End[i][1] / 10, z);
+	}
+	glEnd();
+
+}
+
+void DrawFlyingBird()
+{
+	float z = 0.0f;
+
+	float birdBody[49][2] = {
+		{0.375f, 0.035f},
+		{0.4f, 0.025f},
+		{0.7f, 0.0f},
+		{0.775f, -0.010f},
+		{0.790f, -0.020f},
+		{0.780f, -0.029f},
+		{0.790f, -0.040f},
+		{0.810f, -0.048f},
+		{0.790f, -0.059f},
+		{0.80f, -0.070f},
+		{0.840f, -0.077f},
+		{0.845f, -0.10f},
+		{0.865f, -0.125f},
+		{0.850f, -0.15f},
+		{0.60f, -0.075f},
+		{0.50f, -0.080f},
+		{0.40f, -0.10f},
+		{0.35f, -0.15f},
+		{0.30f, -0.20f},
+		{0.25f, -0.220f},
+		{0.2f, -0.245f},
+		{0.1f, -0.259f},
+		{0.0f, -0.252f},
+		{-0.05f, -0.240f},
+		{-0.10f, -0.225f},
+		{-0.15f, -0.210f},
+		{-0.20f, -0.180f},
+		{-0.25f, -0.150f},
+		{-0.30f, -0.105f},
+		{-0.34f, -0.059f},
+		{-0.35f, -0.05f},
+		{-0.4f, -0.037f},
+		{-0.45f, -0.0125f},
+		{-0.475f, 0.0f},
+		{-0.49f, 0.05f},
+		{-0.475f, 0.075f},
+		{-0.450f, 0.10f},
+		{-0.425f, 0.125f},
+		{-0.40f, 0.137f},
+		{-0.35f, 0.134f},
+		{-0.3f, 0.125f},
+		{-0.250f, 0.112f},
+		{-0.2f, 0.125f},
+		{-0.1f, 0.137f},
+		{0.0f, 0.145f},
+		{0.1f, 0.125f},
+		{0.2f, 0.1f},
+		{0.3f, 0.075f},
+		{0.35f, 0.05f}
+	};
+
+	float birdFeather[32][2] = {
+		{-0.125f, 0.137f},
+		{-0.25f, 0.25f},
+		{-0.285f, 0.3f},
+		{ -0.3f, 0.35f},
+		{-0.285f, 0.40f},
+		{-0.270f, 0.45f},
+		{-0.175f, 0.65f},
+		{-0.125f, 0.7125f},
+		{-0.1f, 0.725f},
+		{-0.11f, 0.675f},
+		{-0.1f, 0.6f},
+		{-0.045f, 0.675f},
+		{0.0f, 0.7f},
+		{0.020f, 0.675f},
+		{-0.020f, 0.575f},
+		{0.1f, 0.65f},
+		{0.1f, 0.6125f},
+		{0.075f, 0.537f},
+		{0.1f, 0.55f},
+		{0.15f, 0.56f},
+		{0.17f, 0.475f},
+		{0.225f, 0.375f},
+		{0.2f, 0.34f},
+		{0.225f, 0.325f},
+		{0.26f, 0.3f},
+		{0.237f, 0.25f},
+		{0.35f, 0.2f},
+		{0.375f, 0.15f},
+		{0.390f, 0.1f},
+		{0.375f, 0.15f},
+		{0.390f, 0.1f},
+		{0.375f, 0.035f}
+	};
+
+	float birdFeatherInternals[][2] = {
+		{0.7f, 0.0f},
+		{0.775f, -0.010f},
+		{0.790f, -0.020f},
+		{0.780f, -0.029f},
+		{0.790f, -0.040f},
+		{0.810f, -0.048f},
+		{0.790f, -0.059f},
+		{0.80f, -0.070f},
+		{0.840f, -0.077f},
+		{0.845f, -0.10f},
+		{0.865f, -0.125f},
+		{0.850f, -0.15f},
+		{0.60f, -0.075f},
+		{0.780f, -0.15f},
+	};
+
+	float birdLegsStart[6][2] = {
+		{0.25f, -0.225f},
+		{0.15f, -0.30f},
+		{0.09f, -0.2875f},
+		{0.1f, -0.2675f},
+		{0.15f, -0.25f},
+		{0.175f, -0.240f}
+	};
+
+	float birdLegsEnd[14][2] = {
+		{0.15f, -0.3f},
+		{0.1f, -0.290f},
+		{0.05f, -0.295f},
+		{-0.0125f, -0.35f},
+		{-0.0125f, -0.3f},
+		{0.0375f, -0.2675f},
+		{0.1f, -0.267f}
+	};
+
+
+	float LegsDetails[4][2] = {
+		{0.05f, -0.295f},
+		{0.05f, -0.35f},
+		{0.025f, -0.325f},
+		{-0.0125f, -0.337f}
+	};
+
+	float LegsDetails2[7][2] = {
+		{0.05f, -0.325f},
+		{0.025f, -0.3687f},
+		{0.075f, -0.35f},
+		{0.1f, -0.35f},
+		{0.025f, -0.375f},
+		{0.0f, -0.350f},
+		{-0.0125f, -0.337f}
+	};
+
+	float LegsOutline1[3][2] = {
+		{0.09f, -0.2875f},
+		{0.025f, -0.3125f},
+		{-0.0125f, -0.337f}
+	};
+
+	float LegsOutline2[4][2] = {
+		{0.09f, -0.2875f},
+		{0.025f, -0.3125f},
+		{0.0f, -0.327f},
+		{0.025f, -0.375f}
+	};
+
+	float LegsOutline3[5][2] = {
+		{0.09f, -0.2875f},
+		{0.025f, -0.3125f},
+		{0.05f, -0.367f},
+		{0.1f, -0.35f},
+		//{0.05f, -0.325f},
+	};
+
+	int i;
+	//glScalef(2.0f, 2.0f, 2.0f);
+
+	//Eye
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(1);
+	glBegin(GL_POINTS);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(-0.410f, 0.046f, 0.0f);
+	glEnd();
+
+	glPointSize(4);
+	glBegin(GL_POINTS);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(-0.410f, 0.046f, 0.0f);
+	glEnd();
+
+
+	glPointSize(8);
+	glBegin(GL_POINTS);
+	glColor3f(1.0f, 0.6f, 0.0f);
+	glVertex3f(-0.405f, 0.05f, 0.0f);
+	glEnd();
+
+
+	//EXPT
+	glLineWidth(2.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 17; i < 28; i++) {
+		float newCord = birdBody[i][1];
+		if (newCord > 0) {
+			newCord = birdBody[i][1] - 0.070f;
+		}
+		else {
+			newCord = birdBody[i][1] + 0.070f;
+		}
+
+		glVertex3f(birdBody[i][0], newCord, z);
+	}
+	glEnd();
+
+	//EXPT
+
+	// fether line from body
+	glLineWidth(1.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(-0.125f - 0.10f, 0.125f, z);
+	glVertex3f(-0.05f - 0.070f, 0.05f, z);
+	glVertex3f(-0.0125f - 0.070, 0.025f, z);
+	glVertex3f(0.4f, -0.005f, z);
+	glVertex3f(0.425f, -0.025f, z);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4f, 0.4f, 0.5f);
+	for (i = 0; i < 14; i++) {
+		glVertex3f(birdFeatherInternals[i][0], birdFeatherInternals[i][1], z);
+	}
+	glEnd();
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4156f, 0.5372f, 0.65f);
+	for (i = 0; i < 49; i++) {
+		glVertex3f(birdBody[i][0], birdBody[i][1], z);
+	}
+	glEnd();
+
+
+
+
+	glLineWidth(2.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 11; i++) {
+		glVertex3f(birdFeather[i][0] - 0.075, birdFeather[i][1] - 0.075f, z);
+	}
+	glEnd();
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4156f, 0.5372f, 0.65f);
+	for (i = 0; i < 32; i++) {
+		glVertex3f(birdFeather[i][0] - 0.075, birdFeather[i][1] - 0.075f, z);
+	}
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.039f, 0.24f, 0.43f);
+	for (i = 0; i < 32; i++) {
+		glVertex3f(birdFeather[i][0] - 0.075, birdFeather[i][1] - 0.075f, z);
+	}
+	for (i = 0; i < 32; i++) {
+		glVertex3f(birdFeather[i][0], birdFeather[i][1], z);
+	}
+	glEnd();
+
+	//Beak
+	glBegin(GL_TRIANGLES);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(-0.475f, 0.0f, z);
+	glVertex3f(-0.525f, -0.006f, z);
+	glVertex3f(-0.49f, 0.05f, z);
+	glEnd();
+
+
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.4156f, 0.5372f, 0.65f);
+	for (i = 0; i < 6; i++) {
+		glVertex3f(birdLegsStart[i][0], birdLegsStart[i][1], z);
+	}
+	glEnd();
+
+
+	//OUTLINE
+	glLineWidth(2.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+
+	for (i = 0; i < 4; i++) {
+		glVertex3f(LegsOutline2[i][0], LegsOutline2[i][1], z);
+	}
+	glEnd();
+
+	glLineWidth(2.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+
+	for (i = 0; i < 4; i++) {
+		glVertex3f(LegsOutline3[i][0], LegsOutline3[i][1], z);
+	}
+	glEnd();
+
+	//leg
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.51f, 0.26f, 0.20f);
+
+	for (i = 0; i < 7; i++) {
+		glVertex3f(birdLegsEnd[i][0], birdLegsEnd[i][1], z);
+	}
+	glEnd();
+
+
+	//DETAILS
+	glBegin(GL_POLYGON);
+	glColor3f(0.51f, 0.26f, 0.20f);
+	for (i = 0; i < 4; i++) {
+		glVertex3f(LegsDetails[i][0], LegsDetails[i][1], z);
+	}
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.51f, 0.26f, 0.20f);
+	for (i = 0; i < 7; i++) {
+		glVertex3f(LegsDetails2[i][0], LegsDetails2[i][1], z);
+	}
+	glEnd();
+
+}
+
 static void tree_internals(GLfloat x, GLfloat y, GLfloat radius)
 {
 	int i;
@@ -650,7 +1294,6 @@ void DrawFlowers() {
 	glPopMatrix();
 }
 
-
 void DrawTree3() {
 	/*glScalef(4.0f, 4.0f, 4.0f);*/
 
@@ -696,9 +1339,6 @@ void DrawTree3() {
 	glEnd();
 
 }
-
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //
