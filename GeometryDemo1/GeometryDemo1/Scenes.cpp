@@ -15,7 +15,7 @@
 // Declare global variables here
 
 float duration = 0.0f;
-CurrentScene gCurrentScene = BIRDS_COMING_SCENE;
+CurrentScene gCurrentScene = JUNGLE_SCENE;
 BOOL IsLyingNetVisible = FALSE;
 BOOL IsRock1Visible = FALSE;
 BOOL IsRock2Visible = FALSE;
@@ -23,6 +23,7 @@ BOOL IsRock3Visible = FALSE;
 BOOL IsRock4Visible = FALSE;
 
 BOOL IsComingBirdsVisible = TRUE;
+BOOL IsFlyingBirdsVisible = TRUE;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   
@@ -55,6 +56,18 @@ void StartStory()
 	else if (gCurrentScene == BIRDS_EATING_SCENE)
 	{
 		BirdsEatingScene();
+	}
+	else if (gCurrentScene == BIRDS_FLY_FAIL_SCENE)
+	{
+		BirdsFlyFailScene();
+	}
+	else if (gCurrentScene == BIRDS_FLYING_SCENE)
+	{
+		BirdsFlyingScene();
+	}
+	else if (gCurrentScene == TITLES_SCENE)
+	{
+		TitlesScene();
 	}
 }
 
@@ -181,7 +194,8 @@ void BirdsIncomingScene()
 	//if (duration >= 1.73f)
 	if (duration >= 0.25f)
 	{
-		IsComingBirdsVisible = TRUE;
+		duration = 0.0f;
+		IsComingBirdsVisible = FALSE;
 
 		gCurrentScene = BIRDS_EATING_SCENE;
 	}
@@ -206,17 +220,221 @@ void BirdsEatingScene()
 	glPopMatrix();
 
 
-	pPP = { -0.6f, -0.35f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	pPP = { -0.5f, -0.25f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBirdEating);
 
-	pPP = { -0.42f, -0.50f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	pPP = { -0.37f, -0.35f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBirdEating);
 
-	pPP = { -0.25f, -0.3f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	pPP = { -0.20f, -0.20f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBirdEating);
 
-	pPP = { -0.2f, -0.45f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	pPP = { -0.1f, -0.3f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBirdEating);
+
+	pPP = { 0.8f, -0.05f, 1.0f,		0.1f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	PlaceObject(DrawBird_Standing);
+	testObjectSelection = DrawBird_Standing;
+
+	if (duration >= 0.80f)
+	{
+		duration = 0.0f;
+		gCurrentScene = BIRDS_FLY_FAIL_SCENE;
+	}
+}
+
+void BirdsFlyFailScene()
+{
+	cameraSpeed = 0.009;
+	cameraX = -4.83f;
+	cameraY = 0.05f;
+	cameraZ = 0.45f;
+	IsLyingNetVisible = TRUE;
+	IsRock1Visible = TRUE;
+	IsRock2Visible = TRUE;
+	IsRock3Visible = TRUE;
+	IsRock4Visible = TRUE;
+
+
+	glPushMatrix();
+	MoveCamera();
+	DrawJungle();
+	glPopMatrix();
+
+	static float x = 0.0;
+	static float y = 0.0;
+	static BOOL directionLeft = TRUE;
+
+	if (directionLeft == TRUE)
+	{
+		x += 0.001;
+		y += 0.001;
+		pPP = { -0.5f - x, -0.3f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+		if (x >= 0.05f)
+		{
+			directionLeft = FALSE;
+		}
+	}
+	else
+	{
+		x -= 0.001;
+		y -= 0.001;
+		pPP = { -0.5f - x, -0.3f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+		if (x <= 0.0f)
+		{
+			directionLeft = TRUE;
+		}
+	}
+
+	PlaceObject(DrawFlyingBird);
+
+	if (directionLeft == TRUE)
+	{
+		pPP = { -0.37f - x, -0.40f - y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	}
+	else
+	{
+		pPP = { -0.37f - x, -0.40f - y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	}
+	PlaceObject(DrawFlyingBird);
+
+
+	if (directionLeft == TRUE)
+	{
+		pPP = { -0.20f + x, -0.25f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
+	}
+	else
+	{
+		pPP = { -0.20f + x, -0.25f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
+	}
+	PlaceObject(DrawFlyingBird);
+
+	if (directionLeft == TRUE)
+	{
+		pPP = { -0.1f + x, -0.35f - y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
+	}
+	else
+	{
+		pPP = { -0.1f + x, -0.35f - y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
+	}
+	PlaceObject(DrawFlyingBird);
+
+	pPP = { 0.8f, -0.05f, 1.0f,		0.1f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	PlaceObject(DrawBird_Standing);
+
+
+	if (duration >= 0.60f)
+	{
+		duration = 0.0f;
+		gCurrentScene = BIRDS_FLYING_SCENE;
+	}
+}
+
+void BirdsFlyingScene()
+{
+	cameraSpeed = 0.009;
+	cameraX = -4.83f;
+	cameraY = 0.05f;
+	cameraZ = 0.45f;
+	IsLyingNetVisible = TRUE;
+	IsRock1Visible = TRUE;
+	IsRock2Visible = TRUE;
+	IsRock3Visible = TRUE;
+	IsRock4Visible = TRUE;
+
+
+	glPushMatrix();
+	MoveCamera();
+	DrawJungle();
+	glPopMatrix();
+
+	if (IsFlyingBirdsVisible)
+	{
+		//Bird 1
+		static float x1 = -0.6f;
+		//static float x1 = 0.95f;
+		static float y1 = -0.35f;
+		//static float y1 = 0.90f;
+		float dX1 = 0.95f;
+		float dY1 = 0.90f;
+		float xSpeedfactor = (-0.6f - dX1) / 200;
+		float ySpeedfactor = (-0.35f - dY1) / 200;
+
+		if (x1 <= dX1)
+			x1 -= xSpeedfactor;
+
+		if (y1 <= dY1)
+			y1 -= ySpeedfactor;
+
+		pPP = { x1, y1, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };
+		PlaceObject(DrawFlyingBird);
+
+		//Bird 2
+		static float x2 = -0.42f;
+		static float y2 = -0.50f;
+		float dX2 = 0.95f;
+		float dY2 = 0.90f;
+		xSpeedfactor = (-0.42f - dX2) / 200;
+		ySpeedfactor = (-0.50f - dY2) / 200;
+
+		if (x2 <= dX2)
+			x2 -= xSpeedfactor;
+
+		if (y2 <= dY2)
+			y2 -= ySpeedfactor;
+
+		pPP = { x2, y2, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };
+		PlaceObject(DrawFlyingBird);
+
+		//Bird 3
+		static float x3 = -0.25f;
+		static float y3 = -0.3f;
+		float dX3 = 0.95f;
+		float dY3 = 0.90f;
+		xSpeedfactor = (-0.25f - dX3) / 200;
+		ySpeedfactor = (-0.3f - dY3) / 200;
+
+		if (x3 <= dX3)
+			x3 -= xSpeedfactor;
+
+		if (y3 <= dY3)
+			y3 -= ySpeedfactor;
+
+		pPP = { x3, y3, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };
+		PlaceObject(DrawFlyingBird);
+
+		//Bird 4
+		static float x4 = -0.2f;
+		static float y4 = -0.45f;
+		float dX4 = 0.95f;
+		float dY4 = 0.90f;
+		xSpeedfactor = (-0.2f - dX4) / 200;
+		ySpeedfactor = (-0.45f - dY4) / 200;
+
+		if (x4 <= dX4)
+			x4 -= xSpeedfactor;
+
+		if (y4 <= dY4)
+			y4 -= ySpeedfactor;
+
+		pPP = { x4, y4, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };
+		PlaceObject(DrawFlyingBird);
+	}
+
+	pPP = { 0.8f, -0.05f, 1.0f,		0.1f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	PlaceObject(DrawBird_Standing);
+
+
+	if (duration >= 0.60f)
+	{
+		duration = 0.0f;
+		gCurrentScene = TITLES_SCENE;
+	}
+}
+
+void TitlesScene()
+{
+
 }
 
 void EmptyAreaScene()
@@ -324,6 +542,7 @@ void HunterGoingToJungle()
 			}
 			else
 			{
+				duration = 0.0f;
 				gCurrentScene = BIRDS_COMING_SCENE;
 			}
 		}

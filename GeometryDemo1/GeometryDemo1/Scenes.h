@@ -29,7 +29,9 @@ enum CurrentScene
 	JUNGLE_SCENE,
 	BIRDS_COMING_SCENE,
 	BIRDS_EATING_SCENE,
+	BIRDS_FLY_FAIL_SCENE,
 	BIRDS_FLYING_SCENE,
+	TITLES_SCENE,
 };
 
 extern float duration;
@@ -53,6 +55,9 @@ void StartStory();
 void EmptyAreaScene();
 void BirdsEatingScene();
 void BirdsIncomingScene();
+void BirdsFlyFailScene();
+void BirdsFlyingScene();
+void TitlesScene();
 void JungleScene();
 void HunterGoingToJungle();
 void DrawJungle();
