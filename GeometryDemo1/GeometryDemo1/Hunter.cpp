@@ -747,6 +747,35 @@ void DrawHunterFrontView()
 	}
 	glEnd();
 
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.3f, 0.3f, 0.3f);
+	glVertex2f(0.041f, 0.175f);
+	glVertex2f(0.035f, -0.211f);
+	glVertex2f(0.023f, -0.245f);
+	glVertex2f(0.010f, -0.267f);
+	glEnd();
+
+
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.3f, 0.3f, 0.3f);
+	glVertex2f(0.028f, 0.175f);
+	glVertex2f(0.021f, -0.211f);
+	glVertex2f(0.014f, -0.245f);
+	glVertex2f(0.009f, -0.273f);
+	glEnd();
+
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-0.115f, -0.180f);
+	glVertex2f(-0.085f, -0.281f);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(0.140f, -0.175f);
+	glVertex2f(0.120, -0.214f);
+	glVertex2f(0.090, -0.259f);
+	glEnd();
+
 	// dhoti
 	glBegin(GL_POLYGON);
 	//glColor3f(1.0f, 0.8588f, 0.6475f);
@@ -1357,14 +1386,14 @@ static void drawSideArm(void)
 	glEnd();
 
 	// forarm
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < sizeof(forarm) / sizeof(forarm[0]); ++i)
 		glVertex2f(forarm[i][0], forarm[i][1]);
 	glEnd();
 
 	// palm and fingers area
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < sizeof(sidePalmFingers) / sizeof(sidePalmFingers[0]); ++i)
 		glVertex2f(sidePalmFingers[i][0], sidePalmFingers[i][1]);
@@ -1446,7 +1475,7 @@ static void drawShoulder() {
 		glVertex2f(shoulderShirtPart[i][0], shoulderShirtPart[i][1]);
 	glEnd();
 
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < sizeof(shoulderHandPart) / sizeof(shoulderHandPart[0]); ++i)
 		glVertex2f(shoulderHandPart[i][0], shoulderHandPart[i][1]);
@@ -1460,6 +1489,7 @@ static void drawLeftPant(void)
 		{0.00f, 0.00f},
 		{1.69f, -0.3f},
 		{1.70f, -2.69f},
+		{1.60f, -2.69f},
 		{1.50f, -3.96f},
 		{1.20f, -4.90f},
 		{-0.5f, -4.69f},
@@ -1470,37 +1500,60 @@ static void drawLeftPant(void)
 		{0.00f, 0.00f}
 	};
 
+	glColor3f(0.7f, 0.7f, 0.7f);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(0.00f, 0.00f);
+	glVertex2f(1.69f, -0.3f);
+	glVertex2f(1.70f, -2.69f);
+	glVertex2f(1.60f, -2.69f);
+	glVertex2f(1.50f, -3.96f);
+	glVertex2f(1.20f, -4.90f);
+	glVertex2f(-0.5f, -4.69f);
+	glVertex2f(-1.0f, -3.96f);
+	glVertex2f(-1.39f, -2.85f);
+	glVertex2f(-1.79f, -1.50f);
+	glVertex2f(-1.89f, -0.3f);
+	glVertex2f(0.00f, 0.00f);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(1.70f, -2.69f);
+	glVertex2f(1.30f, -2.59f);
+	glVertex2f(1.30f, -2.69f);
+	glEnd();
+
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < (sizeof(leftpant) / sizeof(leftpant[0])); ++i)
 		glVertex2f(leftpant[i][0], leftpant[i][1]);
 	glEnd();
 
-
 }
 
 static void drawLeftLeg()
 {
 	float leftleg[][2] = {
-		{0.4f, -7.55f},
-		{0.4f, -4.65f},
-		{1.20f, -4.90f},
-		{1.10f, -5.90f},
-		{1.00f, -6.90f},
-		{0.99f, -7.39f},
-		{0.99f, -7.49f},
-		{2.29f, -7.99f},
-		{2.49f, -7.78f},
-		{2.49f, -8.29f},
-		{2.29f, -8.39f},
-		{0.90f, -8.15f},
-		{0.50f, -8.24f},
-		{0.04f, -8.23f},
-		{-0.02f, -7.69f},
-		{-0.2f, -6.90f},
-		{-0.3f, -6.09f},
-		{-0.4f, -4.69f},
-		{ 0.4f, -4.65f }
+	{0.4f, -7.55f},
+	{0.4f, -4.65f},
+	{1.20f, -4.90f},
+	{1.10f, -5.90f},
+	{1.00f, -6.90f},
+	{0.99f, -7.31f},
+	{2.29f, -7.99f},
+	{2.49f, -7.78f},
+	{2.49f, -8.29f},
+	{2.29f, -8.39f},
+	{0.90f, -8.18f},
+	{0.50f, -8.23f},
+	{0.18f, -8.22f},
+	{0.08f, -8.12f},
+	{0.00f, -8.05f},
+	{-0.02f, -7.69f},
+	{0.12f, -7.19f},
+	{0.02f, -6.90f},
+	{-0.3f, -5.09f},
+	{-0.4f, -4.69f},
+	{ 0.4f, -4.65f }
 	};
 
 	glColor3f(0.0f, 0.0f, 0.0f);
@@ -1519,7 +1572,7 @@ static void drawLeftLeg()
 	glVertex2f(2.51f, -7.86f);
 	glEnd();
 
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < (sizeof(leftleg) / sizeof(leftleg[0])); ++i)
 		glVertex2f(leftleg[i][0], leftleg[i][1]);
@@ -1530,19 +1583,83 @@ static void drawLeftLeg()
 static void drawRightPant()
 {
 	float rightpant[][2] = {
-		{0.20f, -2.2f},
-		{0.00f, 0.00f},
-		{1.69f, -0.3f},
-		{1.70f, -2.69f},
-		{1.50f, -3.96f},
-		{1.20f, -4.90f},
-		{-0.5f, -4.69f},
-		{-1.0f, -3.96f},
-		{-1.39f, -2.85f},
-		{-1.79f, -1.50f},
-		{-1.89f, -0.3f},
-		{0.00f, 0.00f}
+	{0.20f, -2.2f},
+	{0.00f, 0.00f},
+	{1.69f, -0.3f},
+	{1.70f, -2.69f},
+	{1.50f, -3.96f},
+	{1.20f, -4.90f},
+	{-0.5f, -4.69f},
+	{-1.0f, -3.96f},
+	{-1.39f, -2.85f},
+	{-1.79f, -1.50f},
+	{-1.89f, -0.3f},
+	{0.00f, 0.00f}
 	};
+
+	glColor3f(0.7f, 0.7f, 0.7f);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(0.00f, 0.00f);
+	glVertex2f(1.69f, -0.3f);
+	glVertex2f(1.70f, -2.69f);
+	glVertex2f(1.50f, -3.96f);
+	glVertex2f(1.20f, -4.90f);
+	glVertex2f(-0.5f, -4.69f);
+	glVertex2f(-1.0f, -3.96f);
+	glVertex2f(-1.39f, -2.85f);
+	glVertex2f(-1.79f, -1.50f);
+	glVertex2f(-1.89f, -0.3f);
+	glVertex2f(0.00f, 0.00f);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-1.79f, -1.50f);
+	glVertex2f(-1.19f, -1.62f);
+	glVertex2f(-0.79f, -1.59f);
+	glVertex2f(-0.69f, -1.54f);
+	glVertex2f(-0.09f, -1.37f);
+	glVertex2f(1.09f, -0.93f);
+	glVertex2f(1.69f, -0.32f);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-1.18f, -3.51f);
+	glVertex2f(-0.58f, -3.61f);
+	glVertex2f(0.38f, -3.51f);
+	glVertex2f(0.58f, -3.20f);
+	glVertex2f(0.79f, -2.98f);
+	glVertex2f(0.98f, -2.58f);
+	glVertex2f(1.08f, -2.08f);
+	glVertex2f(1.28f, -1.57f);
+	glVertex2f(1.68f, -0.31f);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-1.19f, -3.52f);
+	glVertex2f(-0.59f, -3.62f);
+	glVertex2f(0.39f, -3.52f);
+	glVertex2f(0.59f, -3.21f);
+	glVertex2f(0.78f, -2.99f);
+	glVertex2f(0.99f, -2.59f);
+	glVertex2f(1.09f, -2.09f);
+	glVertex2f(1.29f, -1.58f);
+	glVertex2f(1.69f, -0.32f);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-1.0f, -3.96f);
+	glVertex2f(-0.90f, -4.09f);
+	glVertex2f(-0.70f, -4.13f);
+	glVertex2f(-0.40f, -4.09f);
+	glVertex2f(-0.09f, -4.05f);
+	glVertex2f(0.69f, -3.72f);
+	glVertex2f(0.84f, -3.41f);
+	glVertex2f(1.04f, -3.09f);
+	glVertex2f(1.11f, -2.59f);
+	glVertex2f(1.31f, -2.09f);
+	glVertex2f(1.51f, -1.40f);
+	glVertex2f(1.79f, -0.32f);
+	glEnd();
 
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glBegin(GL_POLYGON);
@@ -1555,25 +1672,28 @@ static void drawRightPant()
 static void drawRightLeg()
 {
 	float rightleg[][2] = {
-		{0.4f, -7.55f},
-		{0.4f, -4.65f},
-		{1.20f, -4.90f},
-		{1.10f, -5.90f},
-		{1.00f, -6.90f},
-		{0.90f, -7.39f},
-		{0.99f, -7.49f},
-		{2.29f, -7.99f},
-		{2.49f, -7.78f},
-		{2.49f, -8.29f},
-		{2.29f, -8.39f},
-		{0.90f, -8.15f},
-		{0.50f, -8.21f},
-		{0.14f, -8.22f},
-		{-0.02f, -7.69f},
-		{-0.2f, -6.90f},
-		{-0.3f, -6.09f},
-		{-0.4f, -4.69f},
-		{ 0.4f, -4.65f }
+	{0.4f, -7.55f},
+	{0.4f, -4.65f},
+	{1.20f, -4.90f},
+	{1.10f, -5.90f},
+	{1.00f, -6.90f},
+	{0.99f, -7.31f},
+	{0.99f, -7.41f},
+	{2.29f, -7.99f},
+	{2.49f, -7.78f},
+	{2.49f, -8.29f},
+	{2.29f, -8.39f},
+	{0.90f, -8.18f},
+	{0.50f, -8.23f},
+	{0.18f, -8.22f},
+	{0.08f, -8.12f},
+	{0.00f, -8.05f},
+	{-0.02f, -7.69f},
+	{0.12f, -7.19f},
+	{0.02f, -6.90f},
+	{-0.3f, -5.09f},
+	{-0.4f, -4.69f},
+	{ 0.4f, -4.65f }
 	};
 
 	glColor3f(0.0f, 0.0f, 0.0f);
@@ -1605,7 +1725,7 @@ static void drawRightLeg()
 	glVertex2f(2.48f, -8.15f);
 	glEnd();
 
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < (sizeof(rightleg) / sizeof(rightleg[0])); ++i)
 		glVertex2f(rightleg[i][0], rightleg[i][1]);
@@ -1614,33 +1734,18 @@ static void drawRightLeg()
 
 }
 
-//void drawMan2()
-//{
-//	drawSideArm();
-//	drawShoulder();
-//	drawSideShirt();
-//	drawLeftPant();
-//	drawLeftLeg();
-//	glRotatef(-1.0f, 1.0f, 0.0f, 0.0f);
-//	drawRightPant();
-//	drawRightLeg();
-//}
-
-
 void DrawHunter_SideView() {
 	DrawFace();
 	drawSideArm();
 	drawShoulder();
 	drawSideShirt();
-
-
-	drawLeftPant();
-	drawLeftLeg();
-	glRotatef(-1.0f, 1.0f, 0.0f, 0.0f);
 	drawRightPant();
 	drawRightLeg();
+	glRotatef(-30.0f, 1.0f, 1.0f, 0.0f);
+	drawLeftPant();
+	drawLeftLeg();
+	
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //

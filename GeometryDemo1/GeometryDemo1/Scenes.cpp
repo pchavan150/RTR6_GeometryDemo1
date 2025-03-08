@@ -529,7 +529,7 @@ void HunterGoingToJungle()
 			cameraX -= cameraSpeed;
 		}
 
-		pPP = { -0.69f, -0.5f, 1.0f,	0.025f, 0.025f, 0.0f,	0.0f, 0.0f, 0.0f };
+		pPP = { -0.69f, -0.5f, 1.0f,	0.020f, 0.025f, 0.0f,	0.0f, 0.0f, 0.0f };
 		PlaceObject(DrawHunter_SideView);
 	}
 	else
@@ -553,7 +553,7 @@ void HunterGoingToJungle()
 				cameraX += cameraSpeed;
 			}
 
-			pPP = { -0.69f, -0.5f, 1.0f,	0.025f, 0.025f, 0.0f,	0.0f, 180.0f, 0.0f };
+			pPP = { -0.69f, -0.5f, 1.0f,	0.020f, 0.025f, 0.0f,	0.0f, 180.0f, 0.0f };
 			PlaceObject(DrawHunter_SideView);
 		}
 
