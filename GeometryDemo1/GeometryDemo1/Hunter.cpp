@@ -1747,6 +1747,931 @@ void DrawHunter_SideView() {
 	
 }
 
+
+/************************************************SIDEVIEW END********************************************/
+
+void DrawManSitting()
+{
+	drawFaceSitting();
+	drawDhotiSitting();
+	drawShirtSitting();
+}
+
+static void drawFaceSitting()
+{
+	float z = 0.0f;
+	int i;
+	float neck[10][2] = {
+		{0.03125f, 0.3375f},
+		{0.01875f, 0.33125f},
+		{0.0125f, 0.334f},
+		{-0.00625f, 0.3375f},
+		{-0.028f, 0.345f},
+		{-0.025f, 0.33125f},
+		{-0.01875f, 0.325f},
+		{-0.00625f, 0.3125f},
+		{0.0222f, 0.2905f},
+		{0.028f, 0.30625f},
+		//{0.03125f, 0.3125f}
+	};
+
+	float rightHairCut[7][2] = {
+		{-0.04375f, 0.4375f},
+		{-0.05f, 0.41875f},
+		{-0.04375f, 0.4f},
+		{-0.05f, 0.4f},
+		{-0.052f, 0.41875f},
+		{-0.0625f, 0.425f},
+		{-0.0625f, 0.43125f}
+	};
+
+	float leftHairCut[5][2] = {
+		{0.05f, 0.4593f},
+		{0.05625f, 0.4375f},
+		{0.05625f, 0.43125f},
+		{0.05624f, 0.4375f},
+		{0.0625f, 0.44375f}
+	};
+
+	//left is actual left of hunter
+	float leftEyebrow[9][2] = {
+		{0.025f, 0.4370f},
+		{0.025f, 0.4340f},
+		{0.0375f, 0.4335f},
+		{0.04375f, 0.4358f},
+		{0.050f, 0.4340f},
+		{0.050f, 0.4360f},
+		{0.04375f, 0.4375f},
+		{0.0375f, 0.4375f},
+		{0.03125f, 0.4370f}
+	};
+
+	float rightEyebrow[8][2] = {
+		{0.0120f, 0.4370f},
+		{0.0120f, 0.4340f},
+		{0.0f, 0.4355f},
+		{-0.0125f, 0.4360f},
+		{-0.025f, 0.43315f},
+		{-0.025f, 0.43375f},
+		{-0.0125f, 0.4375f},
+		{0.0f, 0.4370f}
+	};
+
+	float lips[6][2] = {
+		{0.0375f, 0.3630f},
+		{0.025f, 0.3625f},
+		{0.0125f, 0.3630f},
+		{0.01875f, 0.3655f},
+		{0.025f, 0.36875f},
+		{0.03125f, 0.3655f}
+	};
+
+	float nose[4][2] = {
+		{0.025f, 0.4120f},
+		{0.029f, 0.38125f},
+		{0.026f, 0.3785f},
+		{0.0160f, 0.38125f}
+	};
+
+	float face[26][2] = {
+		{-0.0625f,0.43125f},
+		{-0.0375f,0.45625f},
+		{0.0f,0.450f},
+		{0.0375f,0.45625f},
+		{0.05f,0.4593f},
+		{0.0625f,0.44375f},
+		{0.074f,0.4375f},
+		{0.074f,0.4250f},
+		{0.06875f,0.4125f},
+		{0.0625f,0.4090f},
+		{0.05625f,0.4200f},
+		{0.05800f,0.375f},
+		{0.05f,0.3625f},
+		{0.0375f,0.34375f},
+		{0.03125f,0.3375f},
+		{0.01875f,0.33125f},
+		{0.0125f,0.334f},
+		{-0.00625f,0.3375f},
+		{-0.028f,0.345f},
+		{-0.04375f,0.375f},
+		{-0.05f,0.39375f},
+		{-0.05625f,0.3875f},
+		{-0.06875f,0.4f},
+		{-0.074f,0.4125f},
+		{-0.06875f,0.4210f},
+		{-0.05f,0.425f}
+	};
+
+
+	float moustache[22][2] = {
+		{0.05325f, 0.3625},
+		{0.05425f, 0.3592f},
+		{0.05625f, 0.35625f},
+		{0.05323f, 0.35312f},
+		{0.05f, 0.351f},
+		{0.04375f, 0.35625f},
+		{0.04025f, 0.3625f},
+		{0.0395f, 0.36875f},
+		{0.0375f, 0.370f},
+		{0.03125f, 0.370f},
+		{0.025f, 0.371f},
+		{0.025f, 0.375f},
+		{0.03125f, 0.375f},
+		{0.0375f, 0.3770f},
+		{0.04475f, 0.36875f},
+		{0.0472f, 0.3625f},
+		{0.0475f, 0.35625f},
+		{0.05f, 0.352f},
+		{0.05325f, 0.35312f},
+		{0.05623f, 0.3625f},
+		{0.05628f, 0.3532f},
+		{0.05325f, 0.3624f}
+	};
+
+
+
+	float rightEyeBall[11][2] = {
+		{0.0125f, 0.41575f},
+		{0.0f, 0.41475f},
+		{-0.0125f, 0.41175f},
+		{-0.01675f, 0.41475f},
+		{-0.01475f, 0.41875f},
+		{-0.00925f, 0.4275},
+		{-0.00625f, 0.4280f},
+		{0.00325f, 0.4280f},
+		{0.00625f, 0.4250f},
+		{0.0125f, 0.41975},
+		{0.0126f, 0.41875f}
+	};
+
+	float leftEyeBall[11][2] = {
+		{0.053f, 0.4158f},
+		{0.05f, 0.414f},
+		{0.0375f, 0.414f},
+		{0.028f, 0.415f},
+		{0.0295f, 0.41875f},
+		{0.0300f, 0.42075f},
+		{0.03125f, 0.4250f},
+		{0.0375f, 0.4280f},
+		{0.04375f, 0.4280f},
+		{0.05f, 0.4250f},
+		{0.053f, 0.4210f}
+	};
+
+	float collarRight[10][2] = {
+		{-0.35f, 3.25f},
+		{-0.25f, 2.9f},
+		{-0.125f, 3.0f},
+		{0.0f, 3.0f},
+		{0.25f, 2.9f},
+		{-0.1f, 3.23f},
+		{-0.15f, 3.36f},
+		{-0.18f, 3.5f},
+		{-0.2f, 3.5f},
+		{-0.3f, 3.6f},
+	};
+
+	float collarLeft[10][2] = {
+		{0.36f, 3.48f},
+		{0.28f, 3.36f},
+		{0.3f, 3.25f},
+		{0.27f, 3.12f},
+		{0.25f, 2.9f},
+		{0.3f, 3.0f},
+		{0.42f, 3.1f},
+		{0.68f, 3.0f},
+		//{0.6f, 2.92f},
+		{0.58f, 3.25f},
+		{0.5f, 3.5f}
+	};
+
+	float head[9][2] = {
+		{0.0375f, 0.5f},
+		{0.0125f, 0.5125f},
+		{0.0f, 0.505f},
+		{-0.0125f, 0.5100f},
+		{-0.0375f, 0.5f},
+		{-0.05625f, 0.4875f},
+		{-0.0630f, 0.46875f},
+		{-0.025f, 0.4875f},
+		{0.0f, 0.49375f}
+	};
+
+	float patka[14][2] = {
+		{0.072f, 0.4625f},
+		{0.06875f, 0.5f},
+		{0.0375f, 0.5f},
+		{0.0f, 0.505f},
+		{-0.0250f, 0.4875f},
+		{-0.0630, 0.46875f},
+		{-0.0780f, 0.4625f},
+		{-0.0625f, 0.43125f},
+		{-0.0375, 0.45625f},
+		{0.0f, 0.450f},
+		{0.0375f, 0.45625f},
+		{0.05f, 0.4593f},
+		{0.0625f, 0.44375f},
+		{0.074, 0.4593f}
+	};
+
+	glPushMatrix();
+
+	glScalef(10.0f, 10.0f, 10.0f);
+	glTranslatef(-0.023f, -0.11f, 0.0f);
+	//head
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 9; i++) {
+		glVertex3f(head[i][0], head[i][1], z);
+	}
+	glEnd();
+
+	//patka
+	glBegin(GL_POLYGON);
+	glColor3f(0.80f, 0.466f, 0.133f);
+	for (i = 0; i < 14; i++) {
+		glVertex3f(patka[i][0], patka[i][1], z);
+	}
+	glEnd();
+
+	//hairs
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 7; i++) {
+		glVertex3f(rightHairCut[i][0], rightHairCut[i][1], z);
+	}
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 5; i++) {
+		glVertex3f(leftHairCut[i][0], leftHairCut[i][1], z);
+	}
+	glEnd();
+
+	//Eyebrow
+	glLineWidth(3.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 9; i++) {
+		glVertex3f(leftEyebrow[i][0], leftEyebrow[i][1], z);
+	}
+	glEnd();
+
+	glLineWidth(3.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 8; i++) {
+		glVertex3f(rightEyebrow[i][0], rightEyebrow[i][1], z);
+	}
+	glEnd();
+
+
+	//eye new
+	//NEWWW
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(1);
+	glBegin(GL_POINTS);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(0.04375f, 0.41880f, 0.0f);
+	glEnd();
+
+	//NEWWW END
+
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(3);
+	glBegin(GL_POINTS);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(0.04375f, 0.41880f, 0.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	//glColor3f(1.0f, 1.0f, 1.0f);
+	glColor3f(0.77f, 0.77f, 0.77f);
+	for (i = 0; i < 11; i++)
+	{
+		glVertex3f(leftEyeBall[i][0], leftEyeBall[i][1], z);
+	}
+	glEnd();
+
+	//NEWWW
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(1);
+	glBegin(GL_POINTS);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(-0.0006f, 0.41875f, 0.0f);
+	glEnd();
+	//NEWWW END
+
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(3);
+	glBegin(GL_POINTS);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(-0.0006f, 0.41875f, 0.0f);
+	glEnd();
+
+
+
+	glBegin(GL_POLYGON);
+	//glColor3f(1.0f, 1.0f, 1.0f);
+	glColor3f(0.77f, 0.77f, 0.77f);
+	for (i = 0; i < 11; i++)
+	{
+		glVertex3f(rightEyeBall[i][0], rightEyeBall[i][1], z);
+	}
+	glEnd();
+
+
+	//moustache
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 22; i++) {
+		glVertex3f(moustache[i][0], moustache[i][1], z);
+	}
+	glEnd();
+
+	glTranslatef(0.530f / 10, 0.0f, 0.0f);
+	glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 22; i++) {
+		glVertex3f(moustache[i][0], moustache[i][1], z);
+	}
+	glEnd();
+
+	glRotatef(-180.0f, 0.0f, 1.0f, 0.0f);
+	glTranslatef(-0.530f / 10, 0.0f, 0.0f);
+
+	//random line
+	glLineWidth(3.0f);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(-0.0125f, 0.4f, 0.0f);
+	glVertex3f(0.0f, 0.3875f, 0.0f);
+	glEnd();
+	glLineWidth(1.0f);
+
+	//lips
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 6; i++) {
+		glVertex3f(lips[i][0], lips[i][1], z);
+	}
+	glEnd();
+
+	//lips
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 4; i++) {
+		glVertex3f(nose[i][0], nose[i][1], z);
+	}
+	glEnd();
+
+	//face
+	glBegin(GL_POLYGON);
+	glColor3f(0.5529f, 0.333f, 0.141f);
+	for (i = 0; i < 26; i++) {
+		glVertex3f(face[i][0], face[i][1], z);
+	}
+	glEnd();
+	glBegin(GL_LINE_LOOP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 26; i++) {
+		glVertex3f(face[i][0], face[i][1], z);
+	}
+	glEnd();
+
+	//neck
+	glBegin(GL_POLYGON);
+	//glColor3f(1.0f, 0.8588f, 0.6475f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
+	for (i = 0; i < 10; i++) {
+		glVertex3f(neck[i][0], neck[i][1], z);
+	}
+	glEnd();
+
+
+	//*COLLOR
+
+	glBegin(GL_POLYGON);
+	//glColor3f(0.8f, 0.6f, 0.17f);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	for (i = 0; i < 10; ++i)
+		glVertex2f(collarRight[i][0] / 10, collarRight[i][1] / 10);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	for (i = 0; i < 10; ++i)
+		glVertex2f(collarLeft[i][0] / 10, collarLeft[i][1] / 10);
+	glEnd();
+
+	glPopMatrix();
+}
+
+static void drawShirtSitting(void)
+{
+	// local variable declarations
+	int i;
+	float shirtMidPart[][2] = {
+		{0.0f, -1.0f},
+		{1.125f, -1.0f},
+		{1.125f, 2.25f},
+		{0.36f, 2.25f},
+		{0.30f, 2.0f},
+		{0.25f, 2.1f},
+		{0.0f, 2.5f},
+		{-0.1f, 2.48f},
+		{-0.25f, 2.1f},
+		{-0.5f, 2.75f},
+		{-0.6f, 2.25f},
+		{-0.6f, 2.3f},
+		{-1.125f, 2.3f},
+		{-1.125f, -1.0f}
+	};
+
+	float shirtSide1[][2] = {
+		{-1.0f, 2.3f},
+		{-1.7f, 2.35f},
+		{-2.0f, 2.3f},
+		{-2.08f, 2.4f},
+		{-1.8f, 1.4f},
+		{-1.8f, 1.41f},
+		{-1.9f, 1.41f},
+		{-1.7f, 1.3f},
+		{-1.5f, 1.25f},
+		{-1.0f, 1.15f}
+	};
+
+	float hand1[][2] = {
+		{-2.0f, 2.5f},
+		{-1.95f, 2.65f},
+		{-1.75f, 2.9f},
+		{-1.5f, 3.25f},
+		{-0.75f, 3.9f},
+		{-0.5f, 3.6f},
+		{-1.0f, 2.88f},
+		{-1.2f, 2.58f},
+		{-0.88f, 2.4f},
+		{-0.88f, 1.6f},
+		{-1.4f, 1.9f},
+		{-1.75f, 2.25f},
+		{-1.95f, 2.4f}
+	};
+
+	// local variable declarations
+	float handArr1[][2] = {
+		{ -1.0f, 2.0f },
+		{ -1.7f, 0.7f },
+		{ -2.7f, -2.0f },
+		{ -1.0f, -3.0f },
+		{ -0.3f, -1.0f },
+		{ -0.1f, 1.0f },
+		{-1.0f, 2.0f }
+	};
+
+	float handArr2[][2] = {
+		{ 1.85f, 2.0f },
+		{ 0.8f, 2.5f },
+		{ -1.0f, 2.0f },
+		{ -0.1f, 1.0f },
+		{ 1.3f, 1.2f },
+		{ 1.65f, 0.0f },
+		{ 1.85f, -0.1f },
+		{ 2.0f, 0.0f },
+		{ 1.85f, 2.0f }
+	};
+
+	float handArr3[][2] = {		// hand thumb part
+		{ -0.5f, -1.5f },
+		{ -0.4f, -0.8f },
+		{ 0.2f, -1.0f },
+		{ 1.6f, -1.0f },
+		{ 1.8f, -1.4f },
+		{ 1.6f, -1.0f },
+		{ 1.8f, -1.4f },
+		{ 1.6f, -1.8f },
+		{ 0.2f, -1.8f },
+		{-0.8f, -2.2f }
+	};
+
+	float test[][2] = {
+
+		{-1.6f, 2.35f},
+		{-1.6f, 1.3f},
+		//{-1.25f, 1.25f},
+	};
+	// code
+
+	// left hand and fingers
+	glPushMatrix();
+	glTranslatef(-1.0, 3.9f, 0.0f);
+	glScalef(0.2f, 0.2f, 1.0f);
+	glRotatef(-10, 0.0f, 0.0f, 1.0);
+	// code
+
+
+	// line for separation
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-0.4f, -1.4f);
+	glVertex2f(-0.3f, -1.0f);
+	glVertex2f(-0.18f, -0.15f);
+	glEnd();
+
+	glColor3f(0.961f, 0.741f, 0.557f);
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr1) / sizeof(handArr1[0]); ++i)
+		glVertex3f(handArr1[i][0], handArr1[i][1], 0.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr2) / sizeof(handArr2[0]); ++i)
+		glVertex3f(handArr2[i][0], handArr2[i][1], 0.0f);
+	glEnd();
+
+	glTranslatef(-1.0f, 0.5f, 0.0f);
+	glRotatef(25, 0.0f, 0.0f, 1.0f);
+	glColor3f(0.85f, 0.68f, 0.48f);
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr3) / sizeof(handArr3[0]); ++i)
+		glVertex3f(handArr3[i][0], handArr3[i][1], 0.0f);
+	glEnd();
+	glPopMatrix();
+
+	// right hand and fingers
+	glPushMatrix();
+	glRotatef(180, 0.0f, 1.0f, 0.0f);
+
+	glTranslatef(-0.7, 4.0f, 0.0f);
+	glScalef(0.2f, 0.2f, 1.0f);
+	glRotatef(-10, 0.0f, 0.0f, 1.0);
+
+
+	// line for separation
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-0.4f, -1.4f);
+	glVertex2f(-0.3f, -1.0f);
+	glVertex2f(-0.18f, -0.15f);
+	glEnd();
+
+	glColor3f(0.961f, 0.741f, 0.557f);
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr1) / sizeof(handArr1[0]); ++i)
+		glVertex3f(handArr1[i][0], handArr1[i][1], 0.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr2) / sizeof(handArr2[0]); ++i)
+		glVertex3f(handArr2[i][0], handArr2[i][1], 0.0f);
+	glEnd();
+
+	glTranslatef(-1.0f, 0.5f, 0.0f);
+	glRotatef(25, 0.0f, 0.0f, 1.0f);
+	glColor3f(0.85f, 0.68f, 0.48f);
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr3) / sizeof(handArr3[0]); ++i)
+		glVertex3f(handArr3[i][0], handArr3[i][1], 0.0f);
+	glEnd();
+	glPopMatrix();
+
+
+	//glPushMatrix();
+	////glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
+	////glTranslatef(-0.6f, -0.3f, 0.0f);
+	//glColor3f(0.0f, 0.0f, 0.0f);
+	//glBegin(GL_LINE_STRIP);
+	//for (i = 0; i < 2; i++) {
+	//	glVertex3f(test[i][0], test[i][1], 0.0f);
+	//}
+	//glEnd();
+	//glPopMatrix();
+
+	// left hand
+	glPushMatrix();
+	glTranslatef(-0.75f, -0.1f, 0.0f);
+
+	//glScalef(1.15f, 1.0f, 1.15f);
+	glColor3f(0.961f, 0.741f, 0.557f);
+	glBegin(GL_POLYGON);
+	for (i = 0; i < sizeof(hand1) / sizeof(hand1[i]); ++i)
+		glVertex2f(hand1[i][0], hand1[i][1]);
+	glEnd();
+	glPopMatrix();
+
+
+	// right hand
+	glPushMatrix();
+	glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
+	glTranslatef(-0.5f, -0.15f, 0.0f);
+	//glScalef(1.2f, 1.05f, 1.2f);
+
+	//glColor3f(0.0f, 0.0f, 0.0f);
+	//glBegin(GL_LINE_STRIP);
+	//for (i = 0; i < 2; i++) {
+	//	glVertex3f(test[i][0], test[i][1], 0.0f);
+	//}
+	//glEnd();
+
+	glColor3f(0.961f, 0.741f, 0.557f);
+	glBegin(GL_POLYGON);
+	for (i = 0; i < sizeof(hand1) / sizeof(hand1[i]); ++i)
+		glVertex2f(hand1[i][0], hand1[i][1]);
+	glEnd();
+	glPopMatrix();
+
+	// right part of shirt shoulder
+	glPushMatrix();
+	glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.769f, 0.596f, 0.169f);
+	glBegin(GL_POLYGON);
+	for (i = 0; i < sizeof(shirtSide1) / sizeof(shirtSide1[0]); ++i)
+		glVertex2f(shirtSide1[i][0], shirtSide1[i][1]);
+	glEnd();
+	glPopMatrix();
+
+	// middle part of shirt
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.769f, 0.596f, 0.169f);
+	for (i = 0; i < sizeof(shirtMidPart) / sizeof(shirtMidPart[0]); ++i)
+		glVertex2f(shirtMidPart[i][0], shirtMidPart[i][1]);
+	glEnd();
+
+	// left part of shirt shoulder
+
+	glBegin(GL_POLYGON);
+	for (i = 0; i < sizeof(shirtSide1) / sizeof(shirtSide1[0]); ++i)
+		glVertex2f(shirtSide1[i][0], shirtSide1[i][1]);
+	glEnd();
+
+	glPushMatrix();
+	glTranslatef(-0.2, 2.0f, 0.0f);
+	glScalef(0.3f, 0.3f, 1.0f);
+	// code
+
+	// line for separation
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-0.4f, -1.4f);
+	glVertex2f(-0.3f, -1.0f);
+	glVertex2f(-0.18f, -0.15f);
+	glEnd();
+
+	glColor3f(0.961f, 0.741f, 0.557f);
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr1) / sizeof(handArr1[0]); ++i)
+		glVertex3f(handArr1[i][0], handArr1[i][1], 0.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr2) / sizeof(handArr2[0]); ++i)
+		glVertex3f(handArr2[i][0], handArr2[i][1], 0.0f);
+	glEnd();
+
+	glTranslatef(-1.0f, 0.5f, 0.0f);
+	glRotatef(25, 0.0f, 0.0f, 1.0f);
+	glColor3f(0.85f, 0.68f, 0.48f);
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < sizeof(handArr3) / sizeof(handArr3[0]); ++i)
+		glVertex3f(handArr3[i][0], handArr3[i][1], 0.0f);
+	glEnd();
+
+	glPopMatrix();
+
+}
+
+static void drawDhotiSitting(void)
+{
+	int i;
+	float z = 0.0f;
+	float dhotiR[28][2] = {
+		{-1.0f, 0.25f},
+		{1.0f, -2.75f},
+		{0.75f, -2.6875f},
+		{0.5f, -2.40f},
+		{0.125f, -1.75f},
+		{-0.875f, 0.0f},
+		{0.125f, -1.75f},
+		{0.25f, -2.25f},
+		{0.20f, -2.5f},
+		{0.0f, -2.6875f},
+		{-0.25f, -2.60f},
+		{-1.30f, -1.5f},
+		{-1.40f, -0.75f},
+		{-1.35f, -0.25f},
+		{-1.30f, -0.125f},
+		{-1.30f, 0.0f},
+		{-1.25f, 0.375f},
+		{-1.125f, 0.5f},
+		{-1.0f, 0.60f},
+		{-0.875f, 0.64f},
+		{-0.75f, 0.56f},
+		{-0.6875f, 0.5f},
+		{-0.5f, 0.375f},
+		{-0.25f, 0.125f},
+		{0.0f, 0.15f},
+		{0.25f, 0.0f},
+		{1.0f, -1.0f},
+		{1.0f, -2.75f}
+	};
+
+	float dhotiL[][2] = {
+		{1.5f, 0.0f},
+		{1.0f, -2.75f},
+		{1.40f, -2.75f},
+		{1.37f, -2.4f},
+		{1.675f, -2.53f},
+		{1.93f, -2.375f},
+		{1.90f, -2.5f},
+		{2.06f, -2.70f},
+		{2.375f, -2.25f},
+		{2.53f, -2.0f},
+		{2.5f, -1.75f},
+		{2.6875f, -1.5f},
+		{2.6875f, -1.375f},
+		{2.56f, -1.30f},
+		{2.70f, -0.53f},
+		{2.62f, -0.25f},
+		{2.40f, 0.0f},
+		{2.30f, 0.06f},
+		{2.0f, 0.355f},
+		{1.625f, 0.43f},
+		{1.5f, 0.28f},
+		{1.25f, 0.0f},
+		{1.20f, -0.25f},
+		{1.0f, -0.75f},
+		{1.0f, -1.0f},
+		{1.0f, -2.75f}
+	};
+
+	float LegR[][2] = {
+		{0.0f, -3.0f},
+		{0.20f, -2.5f},
+		{0.0f, -2.6875f},
+		{-0.25f, -2.60f},
+		{-0.1875f, -2.875f},
+		{-0.25f, -2.92f},
+		{-0.28f, -3.0f},
+		{-0.92f, -3.40f},
+		{-0.93f, -3.50f},
+		{-0.90f, -3.52f},
+		{-0.875f, -3.55f},
+		{-0.75f, -3.50f},
+		{-0.73f, -3.56f},
+		{-0.76f, -3.58f},
+		{-0.70f, -3.5f},
+		{-0.25f, -3.5f},
+		{0.0f, -3.25f},
+		{0.15f, -3.18f},
+		{0.35f, -3.17f},
+		{0.5f, -3.125f},
+		{0.51f, -3.0f},
+		{0.375f, -2.75f},
+		{0.20f, -2.5f}
+	};
+
+	float LegL[][2] = {
+		{ 1.875f, -2.875f},
+		{1.40f, -2.75f},
+		{1.37f, -2.4f},
+		{1.675f, -2.53f},
+		{1.93f, -2.375f},
+		{1.90f, -2.5f},
+		{2.06f, -2.70f},
+		{2.375f, -3.03f},
+		{2.15f, -3.28f},
+		{2.0625f, -3.375f},
+		{1.875f, -3.43f},
+		{1.75f, -3.43f},
+		{1.6875f, -3.25f},
+		{1.56f, -3.1875f},
+		{1.54f, -3.0f},
+		{1.5f, -2.81f},
+		{1.40f, -2.75f}
+	};
+
+	glPushMatrix();
+	glScalef(0.9f, 0.9f, 0.0f);
+	glTranslatef(-0.9f, -0.16f, 0.0f);
+
+
+	// DHOTI LINES
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glVertex3f(0.125f, -1.875f, z);
+	glVertex3f(-0.875f, 0.0625f, z);
+	glEnd();
+
+	glLineWidth(2);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glVertex3f(1.375f, -1.875f, z);
+	glVertex3f(1.25f, -0.25f, z);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glVertex3f(1.875f, -2.375f, z);
+	glVertex3f(2.0f, -2.0f, z);
+	glVertex3f(2.25f, -1.375f, z);
+	glVertex3f(2.375f, -0.125f, z);
+	glEnd();
+
+	glLineWidth(3);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glVertex3f(2.1875f, -2.125f, z);
+	glVertex3f(2.15f, -1.5f, z);
+	glEnd();
+
+
+	glLineWidth(2);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glVertex3f(2.1875f, -2.0f, z);
+	glVertex3f(2.5f, -1.6875f, z);
+	glEnd();
+
+	glLineWidth(2);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glVertex3f(2.56f, -1.30f, z);
+	glVertex3f(2.5f, -1.5f, z);
+	glEnd();
+
+	glLineWidth(2);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glVertex3f(-0.25f, 0.125f, z);
+	glVertex3f(-0.125f, -0.125f, z);
+	glEnd();
+
+
+	glLineWidth(3);
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.5f, 0.5f, 0.5f);
+	glVertex3f(1.325f, -2.6875f, z);
+	glVertex3f(1.0f, -2.6375f, z);
+	glVertex3f(0.75f, -2.5f, z);
+	glVertex3f(0.5f, -2.25f, z);
+	glVertex3f(0.40f, -2.0f, z);
+	glVertex3f(0.25f, -1.125f, z);
+	glEnd();
+
+	// DHOTI LINE END
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.7f, 0.7f, 0.7f);
+	for (i = 0; i < 28; i++) {
+		glVertex3f(dhotiR[i][0], dhotiR[i][1], z);
+
+	}
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.7f, 0.7f, 0.7f);
+	for (i = 0; i < 26; i++) {
+		glVertex3f(dhotiL[i][0], dhotiL[i][1], z);
+	}
+	glEnd();
+
+
+
+	//glBegin(GL_LINE_LOOP);
+	//glColor3f(0.0f, 0.0f, 0.0f);
+	//for (i = 1; i < 26; i++) {
+	//	glVertex3f(dhotiR[i][0], dhotiR[i][1], z);
+
+	//}
+	//for (i = 25; i > 0; i--) {
+	//	glVertex3f(dhotiL[i][0], dhotiL[i][1], z);
+	//}
+	//glEnd();
+
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.5529f, 0.333f, 0.141f);
+	for (i = 0; i < 23; i++) {
+		glVertex3f(LegR[i][0], LegR[i][1], z);
+
+	}
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.5529f, 0.333f, 0.141f);
+	for (i = 0; i < 17; i++) {
+		glVertex3f(LegL[i][0], LegL[i][1], z);
+
+	}
+	glEnd();
+
+	glPopMatrix();
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //
 //                                      End of File                                                  //

@@ -19,6 +19,7 @@ void DrawBirdEating();
 void DrawTree3();
 void DrawFlowers();
 void DrawBird_Standing();
+void DrawBird_StandingOnTree();
 void DrawLandingBird();
 void DrawFlyingBird();
 

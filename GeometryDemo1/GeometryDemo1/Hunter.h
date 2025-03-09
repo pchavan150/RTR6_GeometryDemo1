@@ -16,6 +16,10 @@
 
 void DrawHunter_SideView();
 void DrawHunterFrontView();
+void DrawManSitting();
+static void drawFaceSitting();
+static void drawShirtSitting(void);
+static void drawDhotiSitting(void);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //
