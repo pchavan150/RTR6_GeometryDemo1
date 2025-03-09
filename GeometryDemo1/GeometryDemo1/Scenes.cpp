@@ -15,7 +15,7 @@
 // Declare global variables here
 
 float duration = 0.0f;
-CurrentScene gCurrentScene = JUNGLE_SCENE;
+CurrentScene gCurrentScene = BIRDS_COMING_SCENE;
 BOOL IsLyingNetVisible = FALSE;
 BOOL IsRock1Visible = FALSE;
 BOOL IsRock2Visible = FALSE;
@@ -43,7 +43,7 @@ BOOL IsFlyingBirdsVisible = TRUE;
 
 void StartStory()
 {
-	duration += 0.001f;
+	duration += 0.0166f;
 
 	if (gCurrentScene == JUNGLE_SCENE)
 	{
@@ -192,7 +192,7 @@ void BirdsIncomingScene()
 	}
 
 	//if (duration >= 1.73f)
-	if (duration >= 0.25f)
+	if (duration >= 5.0f)
 	{
 		duration = 0.0f;
 		IsComingBirdsVisible = FALSE;
@@ -236,7 +236,7 @@ void BirdsEatingScene()
 	PlaceObject(DrawBird_Standing);
 	testObjectSelection = DrawBird_Standing;
 
-	if (duration >= 0.80f)
+	if (duration >= 5.0f)
 	{
 		duration = 0.0f;
 		gCurrentScene = BIRDS_FLY_FAIL_SCENE;
@@ -323,7 +323,7 @@ void BirdsFlyFailScene()
 	PlaceObject(DrawBird_Standing);
 
 
-	if (duration >= 0.60f)
+	if (duration >= 5.00f)
 	{
 		duration = 0.0f;
 		gCurrentScene = BIRDS_FLYING_SCENE;
@@ -425,7 +425,7 @@ void BirdsFlyingScene()
 	PlaceObject(DrawBird_Standing);
 
 
-	if (duration >= 0.60f)
+	if (duration >= 5.0f)
 	{
 		duration = 0.0f;
 		gCurrentScene = TITLES_SCENE;
@@ -479,27 +479,27 @@ void EmptyAreaScene()
 	pPP = { 0.25f, 0.1f, 0.0f,		0.3f, 0.5f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawBush1);
 
-	if (duration >= 1.17f)
+	if (duration >= 16.8f)
 	{
 		IsLyingNetVisible = TRUE;
 	}
 
-	if (duration >= 1.33f)
+	if (duration >= 19.0f)
 	{
 		IsRock1Visible = TRUE;
 	}
 
-	if (duration >= 1.49f)
+	if (duration >= 20.0f)
 	{
 		IsRock2Visible = TRUE;
 	}
 
-	if (duration >= 1.81f)
+	if (duration >= 21.0f)
 	{
 		IsRock3Visible = TRUE;
 	}
 
-	if (duration >= 1.33f)
+	if (duration >= 22.0f)
 	{
 		IsRock4Visible = TRUE;
 	}
@@ -517,7 +517,7 @@ void HunterGoingToJungle()
 {
 	static BOOL HunterLookingRight = TRUE;
 
-	if (duration >= 2.0f)
+	if (duration >= 23.0f)
 	{
 		HunterLookingRight = FALSE;
 	}
@@ -534,7 +534,7 @@ void HunterGoingToJungle()
 	}
 	else
 	{
-		if (duration >= 3.0f)
+		if (duration >= 30.0f)
 		{
 			if (cameraX >= -4.83)
 			{
@@ -548,7 +548,7 @@ void HunterGoingToJungle()
 		}
 		else
 		{
-			if (cameraX <= 1.83)
+			if (cameraX <= 18.3)
 			{
 				cameraX += cameraSpeed;
 			}
