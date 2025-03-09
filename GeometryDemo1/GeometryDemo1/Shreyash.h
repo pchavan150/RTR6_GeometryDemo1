@@ -79,6 +79,15 @@ void DrawMainTree();
 
 void InitializeLeafs();
 
+//tree2
+void DrawTree5();
+void drawLeafCircles();
+void drawLeftLeaves();
+void drawMiddleLeaves();
+void drawRightLeaves();
+void drawTrunk();
+void drawCircle(float radius);
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //

@@ -549,6 +549,229 @@ void drawTrunkManual(void)
 	glPopMatrix();
 }
 
+//Tree 2
+// 
+void DrawTree5()
+{
+	// whole trunk part
+	drawTrunk();
+
+	// green leaves part
+	drawMiddleLeaves();
+	drawLeftLeaves();
+	drawRightLeaves();
+
+	// extra added circles for detailing the shape
+	drawLeafCircles();
+}
+
+// extra added circles
+void drawLeafCircles()
+{
+	glColor3f(0.31f, 0.478f, 0.298f);
+	glTranslatef(2.0f, 1.45f, 0.0f);
+	drawCircle(0.4f);
+	glTranslatef(-0.08f, -0.85f, 0.0f);
+	drawCircle(0.35f);
+	glTranslatef(-0.6f, -0.2f, 0.0f);
+	drawCircle(0.28f);
+	glColor3f(0.18f, 0.345f, 0.165f);
+	glTranslatef(-0.55f, 1.5f, 0.0f);
+	drawCircle(0.3f);
+
+	glColor3f(0.31f, 0.478f, 0.298f);
+	glTranslatef(0.7f, -0.1f, 0.0f);
+	drawCircle(0.3f);
+
+	// left
+	glTranslatef(-2.2f, -0.2f, 0.0f);
+	drawCircle(0.4f);
+	glTranslatef(-1.0f, -0.2f, 0.0f);
+	drawCircle(0.3f);
+	glTranslatef(-0.35f, -0.6f, 0.0f);
+	drawCircle(0.4f);
+	glTranslatef(0.5f, -0.5f, 0.0f);
+	drawCircle(0.3f);
+	glTranslatef(0.99f, -0.26f, 0.0f);
+	glColor3f(0.18f, 0.345f, 0.165f);
+	drawCircle(0.28f);
+
+	// middle circles
+	glColor3f(0.525f, 0.831f, 0.082f);
+	glTranslatef(0.32f, 0.2f, 0.5f);
+	drawCircle(0.4f);
+	glTranslatef(-0.3f, 0.4f, 0.0f);
+	drawCircle(0.4f);
+	glTranslatef(-0.03f, 0.9f, 0.0f);
+	drawCircle(0.35f);
+	glTranslatef(0.4f, 0.2f, 0.0f);
+	drawCircle(0.25f);
+	glTranslatef(0.47f, -0.1f, 0.0f);
+	drawCircle(0.31f);
+	glTranslatef(0.5f, -0.4f, 0.0f);
+	drawCircle(0.36f);
+	glTranslatef(0.1f, -1.0f, 0.0f);
+	drawCircle(0.37f);
+	glTranslatef(-0.5f, -0.3f, 0.0f);
+	drawCircle(0.28f);
+}
+
+// left green part
+void drawLeftLeaves()
+{
+	glTranslatef(0.0f, 2.4f, 0.0f);
+	glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
+	glBegin(GL_POLYGON);
+	glColor3f(0.30f, 0.50f, 0.275);
+	glVertex3f(1.0f, 1.0f, 0.0f);
+	glVertex3f(0.5f, 0.28f, 0.0f);      //A
+	glVertex3f(0.63f, 0.189f, 0.0f);    //B
+	glVertex3f(0.80f, 0.30f, 0.0f);     //C
+	glVertex3f(0.9f, 0.23f, 0.0f);      //D
+	glVertex3f(1.16f, 0.48f, 0.0f);     //E
+	glColor3f(0.31f, 0.478f, 0.298f);
+	glVertex3f(1.5f, 0.5f, 0.0f);
+	glVertex3f(1.67f, 0.38f, 0.0f);
+	glVertex3f(2.0f, 0.5f, 0.0f);
+	glVertex3f(2.28f, 0.64f, 0.0f);
+	glVertex3f(2.42f, 0.78f, 0.0f);
+	glVertex3f(2.61f, 0.87f, 0.0f);
+	glVertex3f(2.7f, 1.05f, 0.0f);
+	glVertex3f(2.5f, 1.24f, 0.0f);
+	glVertex3f(2.31f, 1.43f, 0.0f);
+	glVertex3f(2.12f, 1.58f, 0.0f);
+	glVertex3f(1.92f, 1.84f, 0.0f);
+	glVertex3f(1.69f, 1.75f, 0.0f);
+	glVertex3f(1.64f, 1.94f, 0.0f);
+	glVertex3f(1.36f, 2.0f, 0.0f);
+	glColor3f(0.153f, 0.31f, 0.141f);
+	glVertex3f(1.0f, 2.0f, 0.0f);
+	glVertex3f(1.0f, 1.85f, 0.0f);
+	glVertex3f(0.81f, 1.62f, 0.0f);
+	glVertex3f(0.f, 0.0f, 0.0f);
+	glVertex3f(0.5f, 0.28f, 0.0f);
+	glEnd();
+}
+
+
+// middle green part
+void drawMiddleLeaves()
+{
+	// middle leaves
+	glTranslatef(0.0f, -0.15f, 0.5f);
+	glBegin(GL_POLYGON);
+	glColor3f(0.525f, 0.831f, 0.082f);
+	glVertex3f(-0.26f, 1.5f, 0.0f);
+	glVertex3f(0.2f, 0.5f, 0.0f);
+	glVertex3f(0.18f, 0.66f, 0.0f);
+	glVertex3f(0.31f, 0.85f, 0.0f);
+	glVertex3f(0.5f, 0.88f, 0.0f);
+	glVertex3f(0.66f, 1.02f, 0.0f);
+	glVertex3f(0.86f, 1.14f, 0.0f);
+	glVertex3f(0.9f, 1.4f, 0.0f);
+	glVertex3f(0.81f, 1.50f, 0.0f);
+	glVertex3f(1.0f, 1.68f, 0.0f);
+	glVertex3f(0.9f, 1.63f, 0.0f);
+	glVertex3f(0.7f, 1.9f, 0.0f);
+	glVertex3f(0.4f, 2.25f, 0.0f);
+	glVertex3f(0.2f, 2.25f, 0.0f);
+	glVertex3f(0.14f, 2.36f, 0.0f);
+	glVertex3f(0.0f, 2.5f, 0.0f);
+	glVertex3f(-0.22f, 2.33f, 0.0f);
+	glVertex3f(-0.37f, 2.63f, 0.0f);
+	glVertex3f(-0.56f, 2.5f, 0.0f);
+	glVertex3f(-0.7f, 2.4f, 0.0f);
+	glVertex3f(-0.8f, 2.4f, 0.0f);
+	glVertex3f(-0.91f, 2.25f, 0.0f);
+	glVertex3f(-1.1f, 1.87f, 0.0f);
+	glVertex3f(-1.37f, 1.73f, 0.0f);
+	glVertex3f(-1.25f, 1.55f, 0.0f);
+	glVertex3f(-1.33f, 1.33f, 0.0f);
+	glVertex3f(-1.12f, 1.03f, 0.0f);
+	glVertex3f(-0.82f, 0.55f, 0.0f);
+	glVertex3f(-0.52f, 0.60f, 0.0f);
+	glVertex3f(-0.17f, 0.48f, 0.0f);
+	glVertex3f(0.2f, 0.5f, 0.0f);
+	glEnd();
+}
+
+// right green part
+void drawRightLeaves()
+{
+	// right leaves
+	glTranslatef(0.3, 2.0f, 0.0f);
+	glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
+	glBegin(GL_POLYGON);
+	glColor3f(0.30f, 0.50f, 0.275);
+	glVertex3f(1.0f, 1.0f, 0.0f);
+	glVertex3f(0.5f, 0.28f, 0.0f);  //A
+	glVertex3f(0.63f, 0.189f, 0.0f);//B
+	glVertex3f(0.80f, 0.30f, 0.0f);    //C
+	glVertex3f(0.9f, 0.23f, 0.0f);      //D
+	glVertex3f(1.16f, 0.48f, 0.0f);        //E
+	glColor3f(0.31f, 0.478f, 0.298f);
+	glVertex3f(1.5f, 0.5f, 0.0f);
+	glVertex3f(1.67f, 0.38f, 0.0f);
+	glVertex3f(2.0f, 0.5f, 0.0f);
+	glVertex3f(2.28f, 0.64f, 0.0f);
+	glVertex3f(2.42f, 0.78f, 0.0f);
+	glVertex3f(2.61f, 0.87f, 0.0f);
+	glVertex3f(2.7f, 1.05f, 0.0f);
+	glVertex3f(2.5f, 1.24f, 0.0f);
+	glVertex3f(2.31f, 1.43f, 0.0f);
+	glVertex3f(2.12f, 1.58f, 0.0f);
+	glVertex3f(1.92f, 1.84f, 0.0f);
+	glVertex3f(1.69f, 1.75f, 0.0f);
+	glVertex3f(1.64f, 1.94f, 0.0f);
+	glVertex3f(1.36f, 2.0f, 0.0f);
+	glColor3f(0.153f, 0.31f, 0.141f);
+	glVertex3f(1.0f, 2.0f, 0.0f);
+	glVertex3f(1.0f, 1.85f, 0.0f);
+	glVertex3f(0.81f, 1.62f, 0.0f);
+	glVertex3f(0.f, 0.0f, 0.0f);
+	glVertex3f(0.5f, 0.28f, 0.0f);  //A
+	glEnd();
+}
+
+
+// whole trunk part of tree
+void drawTrunk()
+{
+	glColor3f(0.58f, 0.31f, 0.13f);
+	glBegin(GL_POLYGON);
+	glVertex3f(-0.073, -0.02676, 0.0f);
+	glVertex3f(0.5f, -1.0f, 0.0f);
+	glVertex3f(0.271f, -0.662f, 0.0f);
+	glVertex3f(0.205f, -0.51f, 0.0f);
+	glVertex3f(0.244f, -0.56f, 0.0f);
+	glVertex3f(0.205f, -0.31f, 0.0f);
+	glVertex3f(0.18f, -0.20f, 0.0f);
+	glVertex3f(0.26f, 0.f, 0.0f);
+	glVertex3f(0.309f, 0.186f, 0.0f);
+	glVertex3f(0.43f, 0.51f, 0.0f);
+	glVertex3f(0.62f, 0.92f, 0.0f);
+	glVertex3f(0.51f, 0.92f, 0.0f);
+	glVertex3f(0.244f, 0.50f, 0.0f);
+	glVertex3f(0.072f, 0.206f, 0.0f);
+	glVertex3f(0.014f, 0.15f, 0.0f);
+	glVertex3f(-0.035f, 0.11f, 0.0f);
+	glVertex3f(-0.1010f, 0.11f, 0.0f);
+
+	glVertex3f(-0.30f, 0.26f, 0.0f);
+	glColor3f(0.388f, 0.192f, 0.125f);
+	glVertex3f(-0.61f, 0.60f, 0.0f);
+	glVertex3f(-0.82f, 0.66f, 0.0f);
+	glVertex3f(-0.86f, 0.60f, 0.0f);
+	glVertex3f(-0.62f, 0.20f, 0.0f);
+	glVertex3f(-0.36f, -0.14f, 0.0f);
+	glVertex3f(-0.27f, -0.38f, 0.0f);
+	glVertex3f(-0.28f, -0.66f, 0.0f);
+	glVertex3f(-0.36f, -1.0f, 0.0f);
+	glVertex3f(0.5f, -1.0f, 0.0f);
+	glEnd();
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //
