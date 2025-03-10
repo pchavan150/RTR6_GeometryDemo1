@@ -117,6 +117,8 @@ int initialize(void)
 
 
 	InitializeLeafs();
+	InitializeWebThreads();
+	InitializeFlyingWebOutline();
 
 	//pPP = (pPlacementParameters)malloc(sizeof(pPlacementParameters));
 	SetDefaultValues();
@@ -137,6 +139,67 @@ int initialize(void)
 		return FALSE;	// If Texture Didn't Load Return FALSE
 
 	return(0);
+}
+
+void InitializeFlyingWebOutline()
+{
+	for (int i = 0; i < (sizeof(layout2) / sizeof(layout2[0])); i++)
+	{
+		layout2[i].x = layout2[i].x / 10.0f;
+		layout2[i].y = layout2[i].y / 10.0f;
+	}
+
+	for (int i = 0; i < sizeof(cone11) / sizeof(cone11[0]); ++i)
+	{
+		cone11[i].x = generate_random(0.35f, 0.25f);
+		cone11[i].y = generate_random(0.75, 0.65);
+
+		cone12[i].x = generate_random(0.35f, 0.2f);
+		cone12[i].y = generate_random(0.65f, 0.6f);
+
+		cone13[i].x = generate_random(0.35f, 0.1f);
+		cone13[i].y = generate_random(0.55f, 0.45f);
+
+
+		cone21[i].x = generate_random(0.45f, 0.35f);
+		cone21[i].y = generate_random(0.72f, 0.62f);
+
+		cone22[i].x = generate_random(0.5f, 0.35f);
+		cone22[i].y = generate_random(0.6f, 0.55f);
+
+		cone23[i].x = generate_random(0.6f, 0.35f);
+		cone23[i].y = generate_random(0.6f, 0.4f);
+
+	}
+
+	for (int i = 0; i < sizeof(cone31) / sizeof(cone31[0]); ++i)
+	{
+
+		cone31[i].x = generate_random(0.42f, 0.3f);
+		cone31[i].y = generate_random(0.32f, 0.27f);
+
+		cone32[i].x = generate_random(0.48f, 0.2f);
+		cone32[i].y = generate_random(0.25f, 0.16f);
+
+		cone33[i].x = generate_random(0.5f, 0.1f);
+		cone33[i].y = generate_random(0.16f, 0.1f);
+	}
+}
+
+void InitializeWebThreads()
+{
+	float counter1 = 1.0f;
+	for (int i = 0; i < 100; i++)
+	{
+		float counter2 = -0.5f;
+		for (int j = 0; j < 100; j++)
+		{
+			threads[i][j].x = counter2;
+			threads[i][j].y = counter1;
+			counter2 += 0.044;
+		}
+		counter1 = counter1 - 0.044;
+	}
 }
 
 void resize(int width, int height)
@@ -165,7 +228,7 @@ void display(void)
 		playMusic();
 	}
 
-
+	
 	StartStory();
 
 

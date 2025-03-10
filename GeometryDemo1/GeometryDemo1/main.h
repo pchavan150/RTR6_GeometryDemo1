@@ -22,7 +22,9 @@
 // Function declarations
 
 
+void InitializeWebThreads();
 
+void InitializeFlyingWebOutline();
 
 
 

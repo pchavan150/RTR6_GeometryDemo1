@@ -20,6 +20,8 @@ float duration = 0.0f;
 CurrentScene gCurrentScene = JUNGLE_SCENE;
 BOOL IsFoodOnNetVisible = FALSE;
 BOOL IsLyingNetVisible = FALSE;
+BOOL IsFlyingWebVisible = FALSE;
+
 BOOL IsRock1Visible = FALSE;
 BOOL IsRock2Visible = FALSE;
 BOOL IsRock3Visible = FALSE;
@@ -381,14 +383,14 @@ void BirdsFlyingScene()
 	{
 		static float scaleX = 0.15f;
 		//Bird 1
-		static float x1 = -0.6f;
+		static float x1 = -0.45f;
 		//static float x1 = 0.95f;
-		static float y1 = -0.35f;
+		static float y1 = -0.2f;
 		//static float y1 = 0.90f;
 		float dX1 = 0.60f;
 		float dY1 = 1.1f;
-		float xSpeedfactor = (-0.6f - dX1) / 500;
-		float ySpeedfactor = (-0.35f - dY1) / 500;
+		float xSpeedfactor = (-0.45f - dX1) / 500;
+		float ySpeedfactor = (-0.2f - dY1) / 500;
 
 		if (x1 <= dX1)
 			x1 -= xSpeedfactor;
@@ -398,16 +400,17 @@ void BirdsFlyingScene()
 
 		scaleX -= 0.0002f;
 
-		pPP = { x1, y1, 0.5f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
+		pPP = { x1, y1, 0.6f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
+		testObjectSelection = DrawFlyingBird;
 
 		//Bird 2
 		static float x2 = -0.42f;
-		static float y2 = -0.50f;
+		static float y2 = -0.40f;
 		float dX2 = 0.60f;
 		float dY2 = 1.1f;
 		xSpeedfactor = (-0.42f - dX2) / 500;
-		ySpeedfactor = (-0.50f - dY2) / 500;
+		ySpeedfactor = (-0.40f - dY2) / 500;
 
 		if (x2 <= dX2)
 			x2 -= xSpeedfactor;
@@ -415,16 +418,16 @@ void BirdsFlyingScene()
 		if (y2 <= dY2)
 			y2 -= ySpeedfactor;
 
-		pPP = { x2, y2, 0.5f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
+		pPP = { x2, y2, 0.6f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
 
 		//Bird 3
-		static float x3 = -0.25f;
-		static float y3 = -0.3f;
+		static float x3 = -0.15f;
+		static float y3 = -0.2f;
 		float dX3 = 0.60f;
 		float dY3 = 1.1f;
-		xSpeedfactor = (-0.25f - dX3) / 500;
-		ySpeedfactor = (-0.3f - dY3) / 500;
+		xSpeedfactor = (-0.15f - dX3) / 500;
+		ySpeedfactor = (-0.2f - dY3) / 500;
 
 		if (x3 <= dX3)
 			x3 -= xSpeedfactor;
@@ -432,16 +435,16 @@ void BirdsFlyingScene()
 		if (y3 <= dY3)
 			y3 -= ySpeedfactor;
 
-		pPP = { x3, y3, 0.5f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
+		pPP = { x3, y3, 0.6f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
 
 		//Bird 4
-		static float x4 = -0.2f;
-		static float y4 = -0.45f;
+		static float x4 = -0.15f;
+		static float y4 = -0.4f;
 		float dX4 = 0.60f;
 		float dY4 = 1.1f;
-		xSpeedfactor = (-0.2f - dX4) / 500;
-		ySpeedfactor = (-0.45f - dY4) / 500;
+		xSpeedfactor = (-0.15f - dX4) / 500;
+		ySpeedfactor = (-0.4f - dY4) / 500;
 
 		if (x4 <= dX4)
 			x4 -= xSpeedfactor;
@@ -449,16 +452,39 @@ void BirdsFlyingScene()
 		if (y4 <= dY4)
 			y4 -= ySpeedfactor;
 
-		pPP = { x4, y4, 0.5f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
+		pPP = { x4, y4, 0.6f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
+
+		static float x6 = -0.65f;
+		static float y6 = -0.60f;
+		float dX6 = 0.65f;
+		float dY6 = 1.2f;
+		xSpeedfactor = (-0.65f - dX6) / 550;
+		ySpeedfactor = (-0.60f - dY6) / 550;
+
+		if (x6 <= dX6)
+			x6 -= xSpeedfactor;
+
+		if (y6 <= dY6)
+			y6 -= ySpeedfactor;
+
+		static float scaleWebX = 0.50f;
+		scaleWebX -= 0.0008f;
+
+		if (IsFlyingWebVisible)
+		{
+			pPP = { x6,y6,0.4f,		scaleWebX,scaleWebX,1.0f,		0.0f,0.0f,0.0f };
+			PlaceObject(DrawFlyingWeb);
+		}
 	}
 
 	pPP = { 0.74f, 0.02f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBird_StandingOnTree);
 
-	if (duration >= 1.0f)
+	if (duration >= 0.3f)
 	{
 		IsLyingNetVisible = FALSE;
+		IsFlyingWebVisible = TRUE;
 	}
 	else
 	{
@@ -470,8 +496,6 @@ void BirdsFlyingScene()
 		pPP = { -0.70f, -0.65f, 0.9f,		0.05f, 0.05f, 0.0f,		0.0f, 0.0f, 0.0f };
 		PlaceObject(DrawManSitting);
 	}
-
-
 
 	if (duration >= 12.0f)
 	{
