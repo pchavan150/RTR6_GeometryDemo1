@@ -17,7 +17,7 @@
 // Declare global variables here
 
 float duration = 0.0f;
-CurrentScene gCurrentScene = BIRDS_COMING_SCENE;
+CurrentScene gCurrentScene = JUNGLE_SCENE;
 BOOL IsFoodOnNetVisible = FALSE;
 BOOL IsLyingNetVisible = FALSE;
 BOOL IsRock1Visible = FALSE;
