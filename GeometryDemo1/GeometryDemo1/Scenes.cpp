@@ -653,7 +653,7 @@ void EmptyAreaScene()
 	pPP = { 0.25f, 0.1f, 0.0f,		0.3f, 0.5f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawBush1);
 
-	if (duration >= 9.0f)
+	if (duration >= 9.0f && gCurrentScene == JUNGLE_SCENE)
 	{
 		IsLyingNetVisible = TRUE;
 	}

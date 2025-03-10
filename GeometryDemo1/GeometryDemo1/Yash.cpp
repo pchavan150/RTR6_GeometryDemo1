@@ -30,25 +30,25 @@ void DrawRocksOnNet()
 {
 	if (IsRock1Visible)
 	{
-		pPP = { -0.5f, 0.6f, 0.0f,		0.4f, 0.4f, 1.0f,		0.0f, 0.0f, 0.0f };
+		pPP = { -0.5f, 0.6f, 0.0f,		0.3f, 0.3f, 1.0f,		0.0f, 0.0f, 0.0f };
 		PlaceObject(drawRock1);
 	}
 
 	if (IsRock2Visible)
 	{
-		pPP = { -0.55f, -0.55f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+		pPP = { -0.55f, -0.55f, 0.0f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };
 		PlaceObject(drawRock2);
 	}
 
 	if (IsRock3Visible)
 	{
-		pPP = { 0.6f, -0.55f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+		pPP = { 0.6f, -0.55f, 0.0f,		0.12f, 0.12f, 1.0f,		0.0f, 0.0f, 0.0f };
 		PlaceObject(drawRock3);
 	}
 
 	if (IsRock4Visible)
 	{
-		pPP = { 0.6f, 0.55f, 0.0f,		0.2f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
+		pPP = { 0.6f, 0.55f, 0.0f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };
 		PlaceObject(drawRock4);
 	}
 }
