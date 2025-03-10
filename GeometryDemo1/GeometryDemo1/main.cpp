@@ -162,7 +162,7 @@ void display(void)
 
 	if (bPlayMusic == FALSE)
 	{
-		//playMusic();
+		playMusic();
 	}
 
 

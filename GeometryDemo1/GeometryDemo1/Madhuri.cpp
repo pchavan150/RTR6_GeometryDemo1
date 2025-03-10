@@ -76,7 +76,7 @@ void DrawBush1()
 	DrawFlower1();
 
 	//bush1
-	glColor3f(0.0f, 1.0f, 0.0f);
+	glColor3f(0.0f, 0.5f, 0.0f);
 	CreateCircle(-0.80f, -0.85f, 0.05f);
 	CreateCircle(-0.75f, -0.85f, 0.05f);
 	CreateCircle(-0.85f, -0.85f, 0.05f);
@@ -104,20 +104,20 @@ void DrawBush2()
 	glPopMatrix();
 
 	//bush2
-	glColor3f(0.0f, 1.0f, 0.0f);
+	glColor3f(0.0f, 0.5f, 0.0f);
 	CreateCircle(-0.338f, -0.72f, 0.08f);
 	CreateCircle(-0.23f, -0.66f, 0.13f);
 	CreateCircle(-0.12f, -0.70f, 0.150f);
 
 	//BushBase()
 	glBegin(GL_QUADS);
-	glColor3f(0.0f, 1.0f, 0.0f);
+	glColor3f(0.0f, 0.5f, 0.0f);
 	glVertex3f(-0.39f, -0.780f, 0.0f);
-	glColor3f(.0f, 1.0f, 0.0f);
+	//glColor3f(.0f, 1.0f, 0.0f);
 	glVertex3f(-0.39f, -0.850f, 0.0f);
-	glColor3f(0.0f, 1.0f, 0.0f);
+	//glColor3f(0.0f, 1.0f, 0.0f);
 	glVertex3f(-0.002f, -0.85f, 0.0f);
-	glColor3f(0.0f, 1.0f, 0.0f);
+	//glColor3f(0.0f, 1.0f, 0.0f);
 	glVertex3f(-0.002f, -0.79f, 0.0f);
 	glEnd();
 }

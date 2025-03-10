@@ -351,7 +351,7 @@ void BirdsFlyFailScene()
 	PlaceObject(DrawBird_StandingOnTree);
 
 
-	if (duration >= 5.00f)
+	if (duration >= 20.00f)
 	{
 		duration = 0.0f;
 		gCurrentScene = BIRDS_FLYING_SCENE;
@@ -453,11 +453,15 @@ void BirdsFlyingScene()
 	pPP = { 0.8f, 0.05f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBird_StandingOnTree);
 
-	pPP = { -0.70f, -0.65f, 0.9f,		0.05f, 0.05f, 0.0f,		0.0f, 0.0f, 0.0f };
-	PlaceObject(DrawManSitting);
-	testObjectSelection = DrawManSitting;
+	if (duration >= 2.0f)
+	{
+		pPP = { -0.70f, -0.65f, 0.9f,		0.05f, 0.05f, 0.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawManSitting);
+	}
 
-	if (duration >= 5.0f)
+	
+
+	if (duration >= 10.0f)
 	{
 		duration = 0.0f;
 		gCurrentScene = TITLES_SCENE;
@@ -637,27 +641,27 @@ void EmptyAreaScene()
 	pPP = { 0.25f, 0.1f, 0.0f,		0.3f, 0.5f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawBush1);
 
-	if (duration >= 16.8f)
+	if (duration >= 9.0f)
 	{
 		IsLyingNetVisible = TRUE;
 	}
 
-	if (duration >= 19.0f)
+	if (duration >= 10.0f)
 	{
 		IsRock1Visible = TRUE;
 	}
 
-	if (duration >= 20.0f)
+	if (duration >= 11.0f)
 	{
 		IsRock2Visible = TRUE;
 	}
 
-	if (duration >= 21.0f)
+	if (duration >= 12.0f)
 	{
 		IsRock3Visible = TRUE;
 	}
 
-	if (duration >= 22.0f)
+	if (duration >= 13.0f)
 	{
 		IsRock4Visible = TRUE;
 		IsFoodOnNetVisible = TRUE;
@@ -730,13 +734,14 @@ void HunterGoingToJungle()
 {
 	static BOOL HunterLookingRight = TRUE;
 
-	if (duration >= 23.0f)
+	if (duration >= 14.0f)
 	{
 		HunterLookingRight = FALSE;
 	}
 
 	if (HunterLookingRight)
 	{
+		//first hunter go to jungle
 		if (cameraX >= -4.83)
 		{
 			cameraX -= cameraSpeed;
@@ -747,22 +752,25 @@ void HunterGoingToJungle()
 	}
 	else
 	{
-		if (duration >= 30.0f)
+		if (duration >= 17.0f)
 		{
 			if (cameraX >= -4.83)
 			{
+				//Move camera back to web position
 				cameraX -= cameraSpeed;
 			}
 			else
 			{
+				//End when camera come to same position
 				duration = 0.0f;
 				gCurrentScene = BIRDS_COMING_SCENE;
 			}
 		}
 		else
 		{
-			if (cameraX <= 18.3)
+			if (cameraX <= 1.83)
 			{
+				//Move hunter back after web and food is placed
 				cameraX += cameraSpeed;
 			}
 

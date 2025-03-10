@@ -28,7 +28,7 @@ float testRotateX = 0.0f;
 float testRotateY = 0.0f;
 float testRotateSpeed = 2.0f;
 
-float cameraX = 2.95f;
+float cameraX = -1.0f;
 float cameraY = 0.05f;
 float cameraZ = 0.45f;
 float cameraSpeed = 0.05f; //0.05
