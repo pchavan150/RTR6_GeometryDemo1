@@ -402,7 +402,6 @@ void BirdsFlyingScene()
 
 		pPP = { x1, y1, 0.6f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
-		testObjectSelection = DrawFlyingBird;
 
 		//Bird 2
 		static float x2 = -0.42f;
