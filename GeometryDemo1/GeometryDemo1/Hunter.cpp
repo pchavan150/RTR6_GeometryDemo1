@@ -2278,7 +2278,7 @@ static void drawShirtSitting(void)
 	glVertex2f(-0.18f, -0.15f);
 	glEnd();
 
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < sizeof(handArr1) / sizeof(handArr1[0]); ++i)
 		glVertex3f(handArr1[i][0], handArr1[i][1], 0.0f);
@@ -2315,7 +2315,7 @@ static void drawShirtSitting(void)
 	glVertex2f(-0.18f, -0.15f);
 	glEnd();
 
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < sizeof(handArr1) / sizeof(handArr1[0]); ++i)
 		glVertex3f(handArr1[i][0], handArr1[i][1], 0.0f);
@@ -2352,7 +2352,7 @@ static void drawShirtSitting(void)
 	glTranslatef(-0.75f, -0.1f, 0.0f);
 
 	//glScalef(1.15f, 1.0f, 1.15f);
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (i = 0; i < sizeof(hand1) / sizeof(hand1[i]); ++i)
 		glVertex2f(hand1[i][0], hand1[i][1]);
@@ -2373,7 +2373,7 @@ static void drawShirtSitting(void)
 	//}
 	//glEnd();
 
-	glColor3f(0.961f, 0.741f, 0.557f);
+	glColor3f(0.5529f, 0.333f, 0.141f);
 	glBegin(GL_POLYGON);
 	for (i = 0; i < sizeof(hand1) / sizeof(hand1[i]); ++i)
 		glVertex2f(hand1[i][0], hand1[i][1]);

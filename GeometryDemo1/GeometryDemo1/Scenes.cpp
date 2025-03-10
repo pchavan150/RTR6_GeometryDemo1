@@ -202,8 +202,8 @@ void BirdsIncomingScene()
 		//Bird 5
 		static float x5 = 0.95f;
 		static float y5 = 0.90f;
-		float dX5 = 0.74f; //0.93f;
-		float dY5 = 0.06f;
+		float dX5 = 0.71f; //0.93f;
+		float dY5 = 0.006f;
 		xSpeedfactor = (0.95f - dX5) / 200;
 		ySpeedfactor = (0.90f - dY5) / 200;
 
@@ -260,7 +260,7 @@ void BirdsEatingScene()
 	pPP = { -0.1f, -0.3f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBirdEating);
 
-	pPP = { 0.8f, 0.05f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	pPP = { 0.74f, 0.02f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBird_StandingOnTree);
 
 	if (duration >= 5.0f)
@@ -347,7 +347,7 @@ void BirdsFlyFailScene()
 	}
 	PlaceObject(DrawFlyingBird);
 
-	pPP = { 0.8f, 0.05f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	pPP = { 0.74f, 0.02f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBird_StandingOnTree);
 
 
@@ -364,7 +364,7 @@ void BirdsFlyingScene()
 	cameraX = -4.83f;
 	cameraY = 0.05f;
 	cameraZ = 0.45f;
-	IsLyingNetVisible = TRUE;
+
 	IsRock1Visible = TRUE;
 	IsRock2Visible = TRUE;
 	IsRock3Visible = TRUE;
@@ -379,15 +379,16 @@ void BirdsFlyingScene()
 
 	if (IsFlyingBirdsVisible)
 	{
+		static float scaleX = 0.15f;
 		//Bird 1
 		static float x1 = -0.6f;
 		//static float x1 = 0.95f;
 		static float y1 = -0.35f;
 		//static float y1 = 0.90f;
-		float dX1 = 0.95f;
-		float dY1 = 0.90f;
-		float xSpeedfactor = (-0.6f - dX1) / 200;
-		float ySpeedfactor = (-0.35f - dY1) / 200;
+		float dX1 = 0.60f;
+		float dY1 = 1.1f;
+		float xSpeedfactor = (-0.6f - dX1) / 500;
+		float ySpeedfactor = (-0.35f - dY1) / 500;
 
 		if (x1 <= dX1)
 			x1 -= xSpeedfactor;
@@ -395,16 +396,18 @@ void BirdsFlyingScene()
 		if (y1 <= dY1)
 			y1 -= ySpeedfactor;
 
-		pPP = { x1, y1, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };
+		scaleX -= 0.0002f;
+
+		pPP = { x1, y1, 0.5f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
 
 		//Bird 2
 		static float x2 = -0.42f;
 		static float y2 = -0.50f;
-		float dX2 = 0.95f;
-		float dY2 = 0.90f;
-		xSpeedfactor = (-0.42f - dX2) / 200;
-		ySpeedfactor = (-0.50f - dY2) / 200;
+		float dX2 = 0.60f;
+		float dY2 = 1.1f;
+		xSpeedfactor = (-0.42f - dX2) / 500;
+		ySpeedfactor = (-0.50f - dY2) / 500;
 
 		if (x2 <= dX2)
 			x2 -= xSpeedfactor;
@@ -412,16 +415,16 @@ void BirdsFlyingScene()
 		if (y2 <= dY2)
 			y2 -= ySpeedfactor;
 
-		pPP = { x2, y2, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };
+		pPP = { x2, y2, 0.5f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
 
 		//Bird 3
 		static float x3 = -0.25f;
 		static float y3 = -0.3f;
-		float dX3 = 0.95f;
-		float dY3 = 0.90f;
-		xSpeedfactor = (-0.25f - dX3) / 200;
-		ySpeedfactor = (-0.3f - dY3) / 200;
+		float dX3 = 0.60f;
+		float dY3 = 1.1f;
+		xSpeedfactor = (-0.25f - dX3) / 500;
+		ySpeedfactor = (-0.3f - dY3) / 500;
 
 		if (x3 <= dX3)
 			x3 -= xSpeedfactor;
@@ -429,16 +432,16 @@ void BirdsFlyingScene()
 		if (y3 <= dY3)
 			y3 -= ySpeedfactor;
 
-		pPP = { x3, y3, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };
+		pPP = { x3, y3, 0.5f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
 
 		//Bird 4
 		static float x4 = -0.2f;
 		static float y4 = -0.45f;
-		float dX4 = 0.95f;
-		float dY4 = 0.90f;
-		xSpeedfactor = (-0.2f - dX4) / 200;
-		ySpeedfactor = (-0.45f - dY4) / 200;
+		float dX4 = 0.60f;
+		float dY4 = 1.1f;
+		xSpeedfactor = (-0.2f - dX4) / 500;
+		ySpeedfactor = (-0.45f - dY4) / 500;
 
 		if (x4 <= dX4)
 			x4 -= xSpeedfactor;
@@ -446,12 +449,21 @@ void BirdsFlyingScene()
 		if (y4 <= dY4)
 			y4 -= ySpeedfactor;
 
-		pPP = { x4, y4, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };
+		pPP = { x4, y4, 0.5f,		scaleX, scaleX, 1.0f,		0.0f, 180.0f, 0.0f };
 		PlaceObject(DrawFlyingBird);
 	}
 
-	pPP = { 0.8f, 0.05f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	pPP = { 0.74f, 0.02f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBird_StandingOnTree);
+
+	if (duration >= 1.0f)
+	{
+		IsLyingNetVisible = FALSE;
+	}
+	else
+	{
+		IsLyingNetVisible = TRUE;
+	}
 
 	if (duration >= 2.0f)
 	{
@@ -459,9 +471,9 @@ void BirdsFlyingScene()
 		PlaceObject(DrawManSitting);
 	}
 
-	
 
-	if (duration >= 10.0f)
+
+	if (duration >= 12.0f)
 	{
 		duration = 0.0f;
 		gCurrentScene = TITLES_SCENE;
@@ -625,7 +637,7 @@ void EmptyAreaScene()
 	pPP = { -0.0f, 0.0f, 0.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(createGrass3);
 
-	pPP = { 0.8f, -0.5f, 0.1f,		0.2f, 0.6f, 1.0f,		0.0f, 0.0f, 0.0f };
+	pPP = { 0.8f, -0.5f, 0.1f,		0.3f, 0.6f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawMainTree);
 
 	pPP = { -0.7f, 0.2f, 0.0f,		0.1f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
@@ -667,55 +679,131 @@ void EmptyAreaScene()
 		IsFoodOnNetVisible = TRUE;
 	}
 
-	if (IsLyingNetVisible)
-	{
-		pPP = { -0.55f, -0.5f, 0.0f,	    0.5f, 0.5f, 0.0f,		300.0f, 0.0f, 130.0f };
-		PlaceObject(drawMeshLayingOnFloor);
-	}
+
+	pPP = { -0.55f, -0.5f, 0.0f,	    0.5f, 0.5f, 0.0f,		300.0f, 0.0f, 130.0f };
+	PlaceObject(drawMeshLayingOnFloor);
 
 	if (IsFoodOnNetVisible)
 	{
-		pPP = { -0.45f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+		if (gCurrentScene == JUNGLE_SCENE ||
+			gCurrentScene == BIRDS_COMING_SCENE)
+		{
 
-		pPP = { -0.35f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.45f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { -0.25f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.35f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { -0.15f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.25f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { -0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.15f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { 0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { 0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { 0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { 0.05f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { 0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { 0.0f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { 0.05f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { -0.05f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { 0.0f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { -0.15f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.05f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { -0.25f, 0.28f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.15f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { -0.35f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.25f, 0.28f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
 
-		pPP = { -0.45f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
-		PlaceObject(DrawFoodGrain);
+			pPP = { -0.35f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.45f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+		}
+		else if (gCurrentScene == BIRDS_EATING_SCENE)
+		{
+
+			pPP = { -0.45f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			if (duration <= 1.0f)
+				PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.35f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.25f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			if (duration <= 1.0f)
+				PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.15f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			if (duration <= 2.0f)
+				PlaceObject(DrawFoodGrain);
+
+			pPP = { 0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			if (duration <= 3.0f)
+				PlaceObject(DrawFoodGrain);
+
+			pPP = { 0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			if (duration <= 3.0f)
+				PlaceObject(DrawFoodGrain);
+
+			pPP = { 0.05f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { 0.0f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			if (duration <= 2.0f)
+				PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.05f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			if (duration <= 4.0f)
+				PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.15f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.25f, 0.28f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			if (duration <= 4.0f)
+				PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.35f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.45f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+		}
+		else
+		{
+			pPP = { -0.35f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.15f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { 0.05f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.15f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.35f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+
+			pPP = { -0.45f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+			PlaceObject(DrawFoodGrain);
+		}
 	}
 
 }
