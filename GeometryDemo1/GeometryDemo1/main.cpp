@@ -280,6 +280,11 @@ void keyboard(unsigned char key, int x, int y)
 		ChangeTransformMode();
 		break;
 
+	case 'P':
+	case 'p':
+		ToggleAnimation();
+		break;
+
 	default:
 		break;
 	}

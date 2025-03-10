@@ -117,7 +117,7 @@ void DrawBirdEating()
 	glEnable(GL_POINT_SMOOTH);
 	glPointSize(7);
 	glBegin(GL_POINTS);
-	glColor3f(0.0f, 0.0f, 0.7f);
+	glColor3f(0.92f, 0.76f, 0.3f);
 	glVertex3f(-0.35f, -0.72f, 0.0f);
 	glEnd();
 

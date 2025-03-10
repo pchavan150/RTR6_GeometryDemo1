@@ -59,6 +59,7 @@ extern GLuint textureTeam;
 
 void StartStory();
 void EmptyAreaScene();
+void DrawFoodGrain();
 void BirdsEatingScene();
 void BirdsIncomingScene();
 void BirdsFlyFailScene();
@@ -74,6 +75,7 @@ void JungleScene();
 void HunterGoingToJungle();
 void DrawJungle();
 void MoveCamera();
+void ToggleAnimation();
 GLuint LoadGLTextures(const char* filepath, GLuint* texture);
 
 

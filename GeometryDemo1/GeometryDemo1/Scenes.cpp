@@ -17,7 +17,8 @@
 // Declare global variables here
 
 float duration = 0.0f;
-CurrentScene gCurrentScene = JUNGLE_SCENE;
+CurrentScene gCurrentScene = BIRDS_COMING_SCENE;
+BOOL IsFoodOnNetVisible = FALSE;
 BOOL IsLyingNetVisible = FALSE;
 BOOL IsRock1Visible = FALSE;
 BOOL IsRock2Visible = FALSE;
@@ -32,6 +33,8 @@ GLuint textureInspiration;
 GLuint textureMusic;
 GLuint texturePresents;
 GLuint textureTeam;
+
+BOOL IsAnimationPlaying = TRUE;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   
@@ -49,9 +52,24 @@ GLuint textureTeam;
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+void ToggleAnimation()
+{
+	if (IsAnimationPlaying)
+	{
+		IsAnimationPlaying = FALSE;
+	}
+	else
+	{
+		IsAnimationPlaying = TRUE;
+	}
+}
+
 void StartStory()
 {
-	duration += 0.0166f;
+	if (IsAnimationPlaying)
+	{
+		duration += 0.0166f;
+	}
 
 	if (gCurrentScene == JUNGLE_SCENE)
 	{
@@ -103,6 +121,7 @@ void BirdsIncomingScene()
 	IsRock2Visible = TRUE;
 	IsRock3Visible = TRUE;
 	IsRock4Visible = TRUE;
+	IsFoodOnNetVisible = TRUE;
 
 
 	glPushMatrix();
@@ -220,6 +239,7 @@ void BirdsEatingScene()
 	IsRock2Visible = TRUE;
 	IsRock3Visible = TRUE;
 	IsRock4Visible = TRUE;
+	IsFoodOnNetVisible = TRUE;
 
 
 	glPushMatrix();
@@ -261,6 +281,7 @@ void BirdsFlyFailScene()
 	IsRock2Visible = TRUE;
 	IsRock3Visible = TRUE;
 	IsRock4Visible = TRUE;
+	IsFoodOnNetVisible = TRUE;
 
 
 	glPushMatrix();
@@ -329,7 +350,7 @@ void BirdsFlyFailScene()
 	pPP = { 0.8f, 0.05f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBird_StandingOnTree);
 
-	
+
 	if (duration >= 5.00f)
 	{
 		duration = 0.0f;
@@ -348,6 +369,7 @@ void BirdsFlyingScene()
 	IsRock2Visible = TRUE;
 	IsRock3Visible = TRUE;
 	IsRock4Visible = TRUE;
+	IsFoodOnNetVisible = TRUE;
 
 
 	glPushMatrix();
@@ -442,7 +464,7 @@ void BirdsFlyingScene()
 	}
 }
 
-GLuint LoadGLTextures(const char* filepath,  GLuint* texture)
+GLuint LoadGLTextures(const char* filepath, GLuint* texture)
 {
 	int width, height, channels;
 	unsigned char* image = stbi_load(filepath, &width, &height, &channels, STBI_rgb);
@@ -638,6 +660,7 @@ void EmptyAreaScene()
 	if (duration >= 22.0f)
 	{
 		IsRock4Visible = TRUE;
+		IsFoodOnNetVisible = TRUE;
 	}
 
 	if (IsLyingNetVisible)
@@ -646,7 +669,61 @@ void EmptyAreaScene()
 		PlaceObject(drawMeshLayingOnFloor);
 	}
 
+	if (IsFoodOnNetVisible)
+	{
+		pPP = { -0.45f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
 
+		pPP = { -0.35f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { -0.25f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { -0.15f, 0.15f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { -0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { 0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { 0.05f, 0.10f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { 0.05f, 0.20f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { 0.0f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { -0.05f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { -0.15f, 0.30f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { -0.25f, 0.28f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { -0.35f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+
+		pPP = { -0.45f, 0.25f, 0.0f,		1.0f, 1.0f, 1.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawFoodGrain);
+	}
+
+}
+
+void DrawFoodGrain()
+{
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(7);
+	glBegin(GL_POINTS);
+	glColor3f(0.92f, 0.76f, 0.3f);
+	glVertex3f(-0.35f, -0.72f, 0.0f);
+	glEnd();
 }
 
 void HunterGoingToJungle()
