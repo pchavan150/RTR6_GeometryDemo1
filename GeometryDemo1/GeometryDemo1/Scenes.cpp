@@ -6,6 +6,8 @@
 
 #include "common.h"
 #include "Scenes.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "data/stb_image.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                  
@@ -15,7 +17,7 @@
 // Declare global variables here
 
 float duration = 0.0f;
-CurrentScene gCurrentScene = BIRDS_COMING_SCENE;
+CurrentScene gCurrentScene = JUNGLE_SCENE;
 BOOL IsLyingNetVisible = FALSE;
 BOOL IsRock1Visible = FALSE;
 BOOL IsRock2Visible = FALSE;
@@ -24,6 +26,12 @@ BOOL IsRock4Visible = FALSE;
 
 BOOL IsComingBirdsVisible = TRUE;
 BOOL IsFlyingBirdsVisible = TRUE;
+
+GLuint textureTech;
+GLuint textureInspiration;
+GLuint textureMusic;
+GLuint texturePresents;
+GLuint textureTeam;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   
@@ -176,7 +184,7 @@ void BirdsIncomingScene()
 		static float x5 = 0.95f;
 		static float y5 = 0.90f;
 		float dX5 = 0.74f; //0.93f;
-		float dY5 = -0.06f;
+		float dY5 = 0.06f;
 		xSpeedfactor = (0.95f - dX5) / 200;
 		ySpeedfactor = (0.90f - dY5) / 200;
 
@@ -186,7 +194,7 @@ void BirdsIncomingScene()
 		if (y5 >= dY5)
 			y5 -= ySpeedfactor;
 
-		pPP = { x5, y5, 1.0f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };
+		pPP = { x5, y5, 1.0f,		0.15f, 0.25f, 1.0f,		0.0f, 0.0f, 0.0f };
 		PlaceObject(DrawLandingBird);
 
 	}
@@ -232,9 +240,8 @@ void BirdsEatingScene()
 	pPP = { -0.1f, -0.3f, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	PlaceObject(DrawBirdEating);
 
-	pPP = { 0.8f, -0.05f, 1.0f,		0.1f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
-	PlaceObject(DrawBird_Standing);
-	testObjectSelection = DrawBird_Standing;
+	pPP = { 0.8f, 0.05f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	PlaceObject(DrawBird_StandingOnTree);
 
 	if (duration >= 5.0f)
 	{
@@ -269,7 +276,7 @@ void BirdsFlyFailScene()
 	{
 		x += 0.001;
 		y += 0.001;
-		pPP = { -0.5f - x, -0.3f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+		pPP = { -0.5f - x, -0.3f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, -40.0f };		//template for copy-paste
 		if (x >= 0.05f)
 		{
 			directionLeft = FALSE;
@@ -279,7 +286,7 @@ void BirdsFlyFailScene()
 	{
 		x -= 0.001;
 		y -= 0.001;
-		pPP = { -0.5f - x, -0.3f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+		pPP = { -0.5f - x, -0.3f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, -40.0f };		//template for copy-paste
 		if (x <= 0.0f)
 		{
 			directionLeft = TRUE;
@@ -319,10 +326,10 @@ void BirdsFlyFailScene()
 	}
 	PlaceObject(DrawFlyingBird);
 
-	pPP = { 0.8f, -0.05f, 1.0f,		0.1f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
-	PlaceObject(DrawBird_Standing);
+	pPP = { 0.8f, 0.05f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	PlaceObject(DrawBird_StandingOnTree);
 
-
+	
 	if (duration >= 5.00f)
 	{
 		duration = 0.0f;
@@ -421,9 +428,12 @@ void BirdsFlyingScene()
 		PlaceObject(DrawFlyingBird);
 	}
 
-	pPP = { 0.8f, -0.05f, 1.0f,		0.1f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
-	PlaceObject(DrawBird_Standing);
+	pPP = { 0.8f, 0.05f, 1.0f,		0.15f, 0.20f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+	PlaceObject(DrawBird_StandingOnTree);
 
+	pPP = { -0.70f, -0.65f, 0.9f,		0.05f, 0.05f, 0.0f,		0.0f, 0.0f, 0.0f };
+	PlaceObject(DrawManSitting);
+	testObjectSelection = DrawManSitting;
 
 	if (duration >= 5.0f)
 	{
@@ -432,9 +442,135 @@ void BirdsFlyingScene()
 	}
 }
 
+GLuint LoadGLTextures(const char* filepath,  GLuint* texture)
+{
+	int width, height, channels;
+	unsigned char* image = stbi_load(filepath, &width, &height, &channels, STBI_rgb);
+
+	if (image)
+	{
+
+		glGenTextures(1, texture);				// Create One Texture
+
+		glBindTexture(GL_TEXTURE_2D, *texture);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexImage2D(GL_TEXTURE_2D, 0, 3, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+
+
+		// Free the image data
+		stbi_image_free(image);
+
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		return *texture;
+	}
+	else
+	{
+		//fprintf(gpFile, "STB loading error: %s\n", stbi_failure_reason());
+		return 0;
+	}
+}
+
 void TitlesScene()
 {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glColor3f(1.0f, 1.0f, 1.0f);
 
+	if (duration >= 0.0f && duration <= 5.0f)
+	{
+		ShowPresentsFrame();
+	}
+	else if (duration >= 5.0f && duration <= 10.0f)
+	{
+		ShowTeamFrame();
+	}
+	else if (duration >= 10.0f && duration <= 15.0f)
+	{
+		ShowTechnologyFrame();
+	}
+	else if (duration >= 15.0f && duration <= 20.0f)
+	{
+		ShowMusicFrame();
+	}
+	else if (duration >= 20.0f && duration <= 25.0f)
+	{
+		ShowInspirationFrame();
+	}
+	else if (duration >= 25.0f)
+	{
+		exit(0);
+	}
+
+}
+
+void ShowTeamFrame()
+{
+	glEnable(GL_TEXTURE_2D);							// Enable Texture Mapping
+	glBindTexture(GL_TEXTURE_2D, textureTeam);
+
+	ShowTextFrame();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+void ShowPresentsFrame()
+{
+	glEnable(GL_TEXTURE_2D);							// Enable Texture Mapping
+	glBindTexture(GL_TEXTURE_2D, texturePresents);
+
+	ShowTextFrame();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+void ShowMusicFrame()
+{
+	glEnable(GL_TEXTURE_2D);							// Enable Texture Mapping
+	glBindTexture(GL_TEXTURE_2D, textureMusic);
+
+	ShowTextFrame();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+void ShowInspirationFrame()
+{
+	glEnable(GL_TEXTURE_2D);							// Enable Texture Mapping
+	glBindTexture(GL_TEXTURE_2D, textureInspiration);
+
+	ShowTextFrame();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+void ShowTechnologyFrame()
+{
+	glEnable(GL_TEXTURE_2D);							// Enable Texture Mapping
+	glBindTexture(GL_TEXTURE_2D, textureTech);
+
+	ShowTextFrame();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+void ShowTextFrame()
+{
+	glBegin(GL_QUADS);
+
+	glTexCoord2f(0, 1);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+
+	glTexCoord2f(1, 1);
+	glVertex3f(1.0f, -1.0f, 0.0f);
+
+	glTexCoord2f(1, 0);
+	glVertex3f(1.0f, 1.0f, 0.0f);
+
+	glTexCoord2f(0, 0);
+	glVertex3f(-1.0f, 1.0f, 0.0f);
+
+	glEnd();
 }
 
 void EmptyAreaScene()

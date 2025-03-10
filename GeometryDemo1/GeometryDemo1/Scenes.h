@@ -44,6 +44,12 @@ extern BOOL IsRock4Visible;
 
 extern BOOL IsComingBirdsVisible;
 
+extern GLuint textureTech;
+extern GLuint textureInspiration;
+extern GLuint textureMusic;
+extern GLuint texturePresents;
+extern GLuint textureTeam;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   
 //                                      Function Prototypes                                          
@@ -58,10 +64,17 @@ void BirdsIncomingScene();
 void BirdsFlyFailScene();
 void BirdsFlyingScene();
 void TitlesScene();
+void ShowTeamFrame();
+void ShowPresentsFrame();
+void ShowMusicFrame();
+void ShowInspirationFrame();
+void ShowTechnologyFrame();
+void ShowTextFrame();
 void JungleScene();
 void HunterGoingToJungle();
 void DrawJungle();
 void MoveCamera();
+GLuint LoadGLTextures(const char* filepath, GLuint* texture);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
