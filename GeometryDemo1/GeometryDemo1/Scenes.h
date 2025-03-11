@@ -58,6 +58,7 @@ extern GLuint textureTeam;
 // Function declarations
 
 void StartStory();
+void DrawRectangle();
 void EmptyAreaScene();
 void DrawFoodGrain();
 void BirdsEatingScene();

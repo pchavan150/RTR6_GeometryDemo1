@@ -73,6 +73,8 @@ void StartStory()
 	{
 		duration += 0.0166f;
 	}
+	
+	DrawRectangle();
 
 	if (gCurrentScene == JUNGLE_SCENE)
 	{
@@ -98,6 +100,31 @@ void StartStory()
 	{
 		TitlesScene();
 	}
+}
+
+void DrawRectangle()
+{
+	glPushMatrix();
+	glTranslatef(0.0f, 1.75f, 1.0f);
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(1.0f, 1.0f, 0.0f);
+	glVertex3f(-1.0f, 1.0f, 0.0f);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+	glVertex3f(1.0f, -1.0f, 0.0f);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0.0f, -1.75f, 1.0f);
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(1.0f, 1.0f, 0.0f);
+	glVertex3f(-1.0f, 1.0f, 0.0f);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+	glVertex3f(1.0f, -1.0f, 0.0f);
+	glEnd();
+	glPopMatrix();
 }
 
 void JungleScene()
@@ -390,7 +417,7 @@ void BirdsFlyFailScene()
 		duration = 0.0f;
 		gCurrentScene = BIRDS_FLYING_SCENE;
 	}
-	
+
 	glPopMatrix();
 
 	glPushMatrix();
