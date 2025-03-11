@@ -624,7 +624,7 @@ void DrawHunterFrontView()
 
 
 	glBegin(GL_POLYGON);
-	glColor3f(0.172f, 0.24f, 0.313f);
+	glColor3f(0.769f, 0.596f, 0.169f);
 	for (i = 0; i < 33; ++i)
 	{
 		glVertex2f(midPart[i][0] / 10, midPart[i][1] / 10);

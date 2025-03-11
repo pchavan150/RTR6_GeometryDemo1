@@ -29,6 +29,7 @@ BOOL IsRock4Visible = FALSE;
 
 BOOL IsComingBirdsVisible = TRUE;
 BOOL IsFlyingBirdsVisible = TRUE;
+BOOL IsWalkingManVisible = FALSE;
 
 GLuint textureTech;
 GLuint textureInspiration;
@@ -275,7 +276,6 @@ void BirdsEatingScene()
 void BirdsFlyFailScene()
 {
 	cameraSpeed = 0.009;
-	cameraX = -4.83f;
 	cameraY = 0.05f;
 	cameraZ = 0.45f;
 	IsLyingNetVisible = TRUE;
@@ -291,6 +291,38 @@ void BirdsFlyFailScene()
 	DrawJungle();
 	glPopMatrix();
 
+
+	glPushMatrix();
+	static float camX = 0.0f;
+	if (duration >= 16.0f)
+	{
+		if (cameraX >= -4.83f)
+		{
+			// going towards birds
+			camX -= cameraSpeed;
+			glTranslatef(camX, 0.0f, 0.0f);
+
+			cameraX -= cameraSpeed;
+
+			IsWalkingManVisible = TRUE;
+		}
+	}
+	else if (duration >= 12.0f)
+	{
+		if (cameraX <= 0.0f)
+		{
+			//going towards hunter
+			camX += cameraSpeed;
+			glTranslatef(camX, 0.0f, 0.0f);
+
+			cameraX += cameraSpeed;
+		}
+	}
+	else
+	{
+		cameraX = -4.83f;
+	}
+
 	static float x = 0.0;
 	static float y = 0.0;
 	static BOOL directionLeft = TRUE;
@@ -299,7 +331,7 @@ void BirdsFlyFailScene()
 	{
 		x += 0.001;
 		y += 0.001;
-		pPP = { -0.5f - x, -0.3f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, -40.0f };		//template for copy-paste
+		pPP = { -0.6f - x, -0.4f + y, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, -40.0f };		//template for copy-paste
 		if (x >= 0.05f)
 		{
 			directionLeft = FALSE;
@@ -309,7 +341,7 @@ void BirdsFlyFailScene()
 	{
 		x -= 0.001;
 		y -= 0.001;
-		pPP = { -0.5f - x, -0.3f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, -40.0f };		//template for copy-paste
+		pPP = { -0.6f - x, -0.4f + y, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, -40.0f };		//template for copy-paste
 		if (x <= 0.0f)
 		{
 			directionLeft = TRUE;
@@ -320,32 +352,32 @@ void BirdsFlyFailScene()
 
 	if (directionLeft == TRUE)
 	{
-		pPP = { -0.37f - x, -0.40f - y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+		pPP = { -0.47f - x, -0.50f - y, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	}
 	else
 	{
-		pPP = { -0.37f - x, -0.40f - y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
+		pPP = { -0.47f - x, -0.50f - y, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 0.0f, 0.0f };		//template for copy-paste
 	}
 	PlaceObject(DrawFlyingBird);
 
 
 	if (directionLeft == TRUE)
 	{
-		pPP = { -0.20f + x, -0.25f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
+		pPP = { -0.30f + x, -0.35f + y, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
 	}
 	else
 	{
-		pPP = { -0.20f + x, -0.25f + y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
+		pPP = { -0.30f + x, -0.35f + y, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
 	}
 	PlaceObject(DrawFlyingBird);
 
 	if (directionLeft == TRUE)
 	{
-		pPP = { -0.1f + x, -0.35f - y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
+		pPP = { -0.2f + x, -0.45f - y, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
 	}
 	else
 	{
-		pPP = { -0.1f + x, -0.35f - y, 1.0f,		0.1f, 0.1f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
+		pPP = { -0.2f + x, -0.45f - y, 0.5f,		0.15f, 0.15f, 1.0f,		0.0f, 180.0f, 0.0f };		//template for copy-paste
 	}
 	PlaceObject(DrawFlyingBird);
 
@@ -358,6 +390,17 @@ void BirdsFlyFailScene()
 		duration = 0.0f;
 		gCurrentScene = BIRDS_FLYING_SCENE;
 	}
+	
+	glPopMatrix();
+
+	glPushMatrix();
+	if (IsWalkingManVisible)
+	{
+		pPP = { -0.69f, -0.5f, 1.0f,	0.020f, 0.025f, 0.0f,	0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawHunter_SideView);
+	}
+	glPopMatrix();
+
 }
 
 void BirdsFlyingScene()
@@ -495,8 +538,13 @@ void BirdsFlyingScene()
 		pPP = { -0.70f, -0.65f, 0.9f,		0.05f, 0.05f, 0.0f,		0.0f, 0.0f, 0.0f };
 		PlaceObject(DrawManSitting);
 	}
+	else
+	{
+		pPP = { -0.70f, -0.65f, 0.9f,		0.18f, 0.18f, 0.0f,		0.0f, 0.0f, 0.0f };
+		PlaceObject(DrawHunterFrontView);
+	}
 
-	if (duration >= 12.0f)
+	if (duration >= 15.0f)
 	{
 		duration = 0.0f;
 		gCurrentScene = TITLES_SCENE;
@@ -554,11 +602,11 @@ void TitlesScene()
 	{
 		ShowMusicFrame();
 	}
-	else if (duration >= 20.0f && duration <= 25.0f)
+	else if (duration >= 20.0f && duration <= 30.0f)
 	{
 		ShowInspirationFrame();
 	}
-	else if (duration >= 25.0f)
+	else if (duration >= 30.0f)
 	{
 		exit(0);
 	}
