@@ -664,7 +664,7 @@ void EmptyAreaScene()
 	PlaceObject(DrawMainTree);
 
 	pPP = { -0.7f, 0.2f, 0.0f,		0.1f, 0.2f, 1.0f,		0.0f, 0.0f, 0.0f };
-	PlaceObject(DrawTree2);
+	PlaceObject(DrawTree6);
 
 
 	pPP = { -0.3f, -0.5f, 0.0f,		1.3f, 1.6f, 1.0f,		0.0f, 0.0f, 0.0f };
@@ -965,7 +965,7 @@ void DrawJungle()
 
 		}
 
-		PlaceObject(DrawTree2);
+		PlaceObject(DrawTree6);
 		x1 += 0.5f;
 
 	}
