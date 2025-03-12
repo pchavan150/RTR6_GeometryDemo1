@@ -1050,7 +1050,8 @@ void DrawLandingBird()
 
 
 
-
+	glPushMatrix();
+	glRotatef(-6, 0.0f, 1.0f, 1.0f);
 	glLineWidth(2.0f);
 	glBegin(GL_LINE_STRIP);
 	glColor3f(0.0f, 0.0f, 0.0f);
@@ -1076,6 +1077,7 @@ void DrawLandingBird()
 		glVertex3f(birdFeather[i][0], birdFeather[i][1], z);
 	}
 	glEnd();
+	glPopMatrix();
 
 	//Beak
 	glBegin(GL_TRIANGLES);
