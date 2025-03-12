@@ -750,7 +750,7 @@ void EmptyAreaScene()
 
 	pPP = { 0.25f, 0.1f, 0.0f,		0.3f, 0.5f, 1.0f,		0.0f, 0.0f, 0.0f };
 	PlaceObject(DrawBush1);
-
+	
 	if (duration >= 9.0f && gCurrentScene == JUNGLE_SCENE)
 	{
 		IsLyingNetVisible = TRUE;
@@ -923,6 +923,7 @@ void HunterGoingToJungle()
 	if (duration >= 14.0f)
 	{
 		HunterLookingRight = FALSE;
+		IsWalkingAnimationPlaying = TRUE;
 	}
 
 	if (HunterLookingRight)
@@ -931,6 +932,10 @@ void HunterGoingToJungle()
 		if (cameraX >= -4.83)
 		{
 			cameraX -= cameraSpeed;
+		}
+		else
+		{
+			IsWalkingAnimationPlaying = FALSE;
 		}
 
 		pPP = { -0.69f, -0.5f, 1.0f,	0.020f, 0.025f, 0.0f,	0.0f, 0.0f, 0.0f };

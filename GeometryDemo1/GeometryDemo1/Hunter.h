@@ -7,6 +7,10 @@
 
 #pragma once
 
+
+extern BOOL IsWalkingAnimationPlaying;
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   
 //                                      Function Prototypes                                          

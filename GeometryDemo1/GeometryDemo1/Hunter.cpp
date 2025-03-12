@@ -9,6 +9,8 @@
 #include "hunter.h"
 
 
+BOOL IsWalkingAnimationPlaying = TRUE;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                   //
 //                                      Function Definitions                                          //
@@ -1735,16 +1737,91 @@ static void drawRightLeg()
 }
 
 void DrawHunter_SideView() {
+	static float arm_angle = -5.0f;
+	static bool armForward = true;
+	static bool isRight = true;
+	static float left_leg_angle = -10.0f;
+	static bool leftInc = false;
+	static float right_leg_angle = 10.0f;
+	static bool rightInc = false;
 	DrawFace();
-	drawSideArm();
+
+	if (IsWalkingAnimationPlaying)
+	{
+		if (arm_angle > 10)
+			armForward = false;
+		if (arm_angle < -10)
+			armForward = true;
+
+		if (armForward)
+			arm_angle = arm_angle + 0.3f;
+		else
+			arm_angle = arm_angle - 0.3f;
+	}
+	else
+	{
+		arm_angle = 10.0f;
+	}
+
+	glPushMatrix();
+	glTranslatef(arm_angle / 10.0f, 0.0f, 0.0f);
+	glRotatef(arm_angle, 0.0f, 0.0f, 1.0f);
+
 	drawShoulder();
+	drawSideArm();
+	glPopMatrix();
+
+
 	drawSideShirt();
+
+	if (IsWalkingAnimationPlaying)
+	{
+		if (right_leg_angle < -10)
+			rightInc = true;
+		if (right_leg_angle > 10)
+		{
+			rightInc = false;
+		}
+		if ((right_leg_angle > -0.15) && (right_leg_angle < 0.15))
+			isRight = false;
+
+		if (rightInc)
+			right_leg_angle = right_leg_angle + 0.3f;
+		else
+			right_leg_angle = right_leg_angle - 0.3f;
+
+	}
+
+	glPushMatrix();
+	glRotatef(right_leg_angle, 0.0f, 0.0f, 1.0f);
 	drawRightPant();
 	drawRightLeg();
-	glRotatef(-30.0f, 1.0f, 1.0f, 0.0f);
+	glPopMatrix();
+
+
+	if (IsWalkingAnimationPlaying)
+	{
+		if (left_leg_angle < -10)
+			leftInc = true;
+		if (left_leg_angle > 10)
+		{
+			leftInc = false;
+		}
+		if ((left_leg_angle > -0.15) && (left_leg_angle < 0.15))
+			isRight = true;
+
+		if (leftInc)
+			left_leg_angle = left_leg_angle + 0.3f;
+		else
+			left_leg_angle = left_leg_angle - 0.3f;
+	}
+
+	glRotatef(left_leg_angle, 0.0f, 0.0f, 1.0f);
+	glRotatef(-10, 1.0f, 1.0f, 0.0f);
 	drawLeftPant();
 	drawLeftLeg();
-	
+	glRotatef(10, 1.0f, 1.0f, 0.0f);
+	glRotatef(-left_leg_angle, 0.0f, 0.0f, 1.0f);
 }
 
 
