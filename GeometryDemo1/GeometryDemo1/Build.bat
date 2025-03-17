@@ -1,0 +1,3 @@
+cl.exe /c Chaitanya.cpp common.cpp Hunter.cpp Kapil.cpp Madhuri.cpp main.cpp Manasi.cpp Pankaj.cpp Raviraj.cpp Rishan.cpp Scenes.cpp Shreyash.cpp Sumit.cpp Yash.cpp /I C:\freeglut\include
+
+link.exe /OUT:TeamWork.exe Chaitanya.obj common.obj Hunter.obj Kapil.obj Madhuri.obj main.obj Manasi.obj Pankaj.obj Raviraj.obj Rishan.obj Scenes.obj Shreyash.obj Sumit.obj Yash.obj /LIBPATH:C:\freeglut\lib\x64 freeglut.lib winmm.lib /SUBSYSTEM:CONSOLE

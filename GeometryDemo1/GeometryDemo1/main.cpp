@@ -123,19 +123,19 @@ int initialize(void)
 	//pPP = (pPlacementParameters)malloc(sizeof(pPlacementParameters));
 	SetDefaultValues();
 
-	if (!LoadGLTextures("Data/textures/Tech.png", &textureTech))								// Jump To Texture Loading Routine
+	if (!LoadGLTextures("Data/textures/NewTechnology.png", &textureTech))								// Jump To Texture Loading Routine
 		return FALSE;	// If Texture Didn't Load Return FALSE
 
-	if (!LoadGLTextures("Data/textures/Inspiration.png", &textureInspiration))								// Jump To Texture Loading Routine
+	if (!LoadGLTextures("Data/textures/NewInspiration.png", &textureInspiration))								// Jump To Texture Loading Routine
 		return FALSE;	// If Texture Didn't Load Return FALSE
 
 	if (!LoadGLTextures("Data/textures/Music.png", &textureMusic))								// Jump To Texture Loading Routine
 		return FALSE;	// If Texture Didn't Load Return FALSE
 
-	if (!LoadGLTextures("Data/textures/Presents.png", &texturePresents))								// Jump To Texture Loading Routine
+	if (!LoadGLTextures("Data/textures/NewGroupName.png", &texturePresents))								// Jump To Texture Loading Routine
 		return FALSE;	// If Texture Didn't Load Return FALSE
 
-	if (!LoadGLTextures("Data/textures/Team.png", &textureTeam))								// Jump To Texture Loading Routine
+	if (!LoadGLTextures("Data/textures/NewRenderedNames.png", &textureTeam))								// Jump To Texture Loading Routine
 		return FALSE;	// If Texture Didn't Load Return FALSE
 
 	return(0);

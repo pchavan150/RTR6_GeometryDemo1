@@ -28,7 +28,7 @@ BOOL bPlayMusic = FALSE;
 
 void playMusic(void)
 {
-	PlaySound("Data/jeetenge.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	PlaySound("Data/jeetenge3.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
 	bPlayMusic = TRUE;
 }

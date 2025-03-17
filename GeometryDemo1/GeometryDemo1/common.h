@@ -65,7 +65,7 @@ typedef struct
 
 extern PlacementParameters pPP;
 
-typedef enum tagTransformMode
+enum tagTransformMode
 {
 	TRANSLATE,
 	ROTATE,
